@@ -32,7 +32,10 @@ img{max-width:100%}
 @keyframes patti{to{background-position:-1152px 0}}
 .mayu{width:80px;height:144px;background:url(img/mayu_stand.png) 0 0/320px 144px no-repeat;animation:mayu 1.4s steps(4) infinite}
 @keyframes mayu{to{background-position:-320px 0}}
-.band.has-sprite .in{padding-right:110px}
+.band.has-sprite .in{padding-right:96px}
+.band.has-sprite .patti{width:72px;height:108px;background-size:864px 108px;animation-name:patti-s;right:10px}
+@keyframes patti-s{to{background-position:-864px 0}}
+.chip{max-width:100%}
 
 /* 本文 */
 .article{max-width:760px;margin:0 auto;padding:8px 16px 40px}
