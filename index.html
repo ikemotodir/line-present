@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>公式LINE 豪華5大特典｜STUDIO PATTI</title>
+<meta name="description" content="AI開発するパパ絵本作家・池本将が、AIと進める“はじめの一歩”を5つの特典にまとめました。公式LINEで無料で受け取れます。">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700;900&family=DotGothic16&family=Silkscreen&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+.hero .in{padding:26px 16px 40px}
+.hero h1{font-size:clamp(25px,6.6vw,40px);line-height:1.45;margin-top:14px}
+.hero .sub{margin:12px 0 0;font-size:17px;line-height:1.8;max-width:30em}
+.hero .stage{position:relative;height:150px;margin-top:10px}
+.hero .stage .patti{right:auto;left:8px}
+.hero .stage .mayu{right:auto;left:112px}
+.cta{display:block;max-width:420px;margin:18px auto 6px;text-align:center;background:var(--btn);color:var(--btn-ink);text-decoration:none;font-weight:900;font-size:19px;padding:16px 18px;border-radius:999px;box-shadow:0 5px 0 #049a42}
+.cta:active{transform:translateY(3px);box-shadow:0 2px 0 #049a42}
+.cta small{display:block;font-size:12.5px;font-weight:700;opacity:.95}
+.hero .note{text-align:center;font-size:13px;opacity:.95;margin:6px 0 0}
+.sec{max-width:760px;margin:0 auto;padding:30px 16px 6px}
+.sec h2{font-size:clamp(21px,5.2vw,27px);line-height:1.45;margin:0 0 14px;text-wrap:balance}
+.sec h2 .pix{display:block;font-size:13px;color:var(--lilac);letter-spacing:.14em;margin-bottom:2px}
+.pain{list-style:none;padding:0;margin:0}
+.pain li{background:var(--paper);border:1px solid var(--rule);border-radius:12px;padding:12px 14px 12px 42px;margin:8px 0;position:relative}
+.pain li::before{content:"✓";position:absolute;left:14px;top:11px;color:var(--navy);font-weight:900}
+.story p{margin:10px 0}
+.cards{display:grid;gap:14px}
+.card{background:var(--paper);border:1px solid var(--rule);border-radius:16px;padding:16px;position:relative;overflow:hidden}
+.card::before{content:"";position:absolute;inset:0 auto 0 0;width:6px;background:linear-gradient(var(--navy),var(--lilac))}
+.card .no{font-family:"DotGothic16",monospace;display:inline-block;background:var(--navy);color:#fff;border-radius:6px;padding:1px 10px;font-size:14px}
+.card .cat{font-family:"DotGothic16",monospace;font-size:14px;color:var(--lilac);margin-left:6px}
+.card h3{margin:8px 0 6px;font-size:18px;line-height:1.5}
+.card p{margin:0;font-size:15px;color:var(--ink)}
+.card .fine{margin-top:8px;font-size:13px;color:var(--muted)}
+.card.five .no{background:#06c755}
+.order{margin-top:14px;background:var(--yellow-soft);border-radius:12px;padding:12px 14px;font-size:15px}
+.prof{display:grid;gap:12px;background:var(--paper);border:1px solid var(--rule);border-radius:16px;padding:18px}
+.prof .name{font-size:20px;font-weight:900;margin:0}
+.prof .role{color:var(--muted);font-size:14px;margin:2px 0 0}
+.prof ul{margin:6px 0 0;padding-left:1.3em}
+.prof li{margin:4px 0}
+.creed{margin-top:6px;padding:12px 14px;border-radius:12px;background:var(--quote);font-weight:700}
+.steps{counter-reset:s;list-style:none;padding:0;margin:0}
+.steps li{position:relative;background:var(--paper);border:1px solid var(--rule);border-radius:12px;padding:12px 14px 12px 58px;margin:8px 0}
+.steps li::before{counter-increment:s;content:"STEP" counter(s);position:absolute;left:10px;top:13px;font-family:"Silkscreen",monospace;font-size:10px;background:var(--navy);color:#fff;border-radius:4px;padding:2px 4px}
+.steps b{display:block}
+.faq details{background:var(--paper);border:1px solid var(--rule);border-radius:12px;margin:8px 0;padding:0 14px}
+.faq summary{cursor:pointer;font-weight:700;padding:12px 0;list-style:none}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::before{content:"Q. ";color:var(--navy);font-weight:900}
+.faq details p{margin:0 0 12px}
+.fineprint{font-size:13px;color:var(--muted);padding-left:1.2em;margin:0}
+.fineprint li{margin:4px 0}
+.bottom-cta{max-width:760px;margin:0 auto;padding:24px 16px 10px}
+.sticky{transition:opacity .2s;position:sticky;bottom:0;background:linear-gradient(transparent,var(--bg) 35%);padding:14px 16px 12px;z-index:5}
+.sticky.off{opacity:0;pointer-events:none}
+.sticky .cta{margin:0 auto;font-size:17px;padding:13px 16px}
+</style>
+</head>
+<body>
+<header class="band hero">
+  <div class="in">
+    <span class="brand">STUDIO PATTI ／ 5 PRESENTS</span><br>
+    <span class="chip">公式LINE限定　豪華5大特典</span>
+    <h1>「自分がもう1人ほしい」<br>と思ったことのある、<br>がんばる親へ。</h1>
+    <p class="sub">AIと進める“はじめの一歩”を、5つの特典にまとめました。公式LINEに登録すると、5つとも無料で受け取れます。</p>
+    <div class="stage" aria-hidden="true"><div class="sprite patti"></div><div class="sprite mayu"></div></div>
+    <a class="cta" href="https://lin.ee/yb89J2Z" target="_blank" rel="noopener">公式LINEで5大特典を受け取る<small>友だち追加だけ・無料</small></a>
+  </div>
+</header>
+
+<section class="sec">
+  <h2><span class="pix">DO YOU ?</span>こんなこと、ありませんか？</h2>
+  <ul class="pain">
+    <li>やりたい事はたくさんあるのに、子育てと仕事で1日が終わってしまう</li>
+    <li>AIが気になってChatGPTを使ってみたけど、調べものくらいで止まっている</li>
+    <li>AIに話しかけるたびに、自分のことを一から説明している</li>
+    <li>「開発」「自動化」と聞くと、自分には関係ない話だと思ってしまう</li>
+  </ul>
+  <div class="story">
+    <p><strong>ボクも、ずっと同じでした。</strong></p>
+    <p>テレビ番組のディレクターをしながら、絵本を描いて、会社をつくって。やりたい事は山ほどあるのに、1人じゃできないことばかりで、「自分がもう1人ほしい」とずっと思っていました。</p>
+    <p>2026年の春にClaudeというAIに出会ってから、少しずつ変わってきました。本職のエンジニアではないボクが、AIといっしょに試してきたやり方を、5つの特典にまとめました。</p>
+  </div>
+</section>
+
+<section class="sec" id="presents">
+  <h2><span class="pix">5 PRESENTS</span>公式LINE　豪華5大特典</h2>
+  <div class="cards">
+    <article class="card"><span class="no">特典1</span><span class="cat">まずこれやれ①</span>
+      <h3>AIの「メモリ」に焼きこむ「絶対ルール」10選</h3>
+      <p>AIに毎回同じことを言わなくていいように、最初に覚えておいてもらう決まりごと10個。ボクのAIに実際に入れているルールから選び、コピーして貼るだけで使える形にしました。</p></article>
+    <article class="card"><span class="no">特典2</span><span class="cat">まずこれやれ②</span>
+      <h3>自動で動き出すClaudeの設定ガイド</h3>
+      <p>決めた時間になると、Claudeが自分で作業を始めてくれる設定の手引き。いちばんかんたんな方法と、貼るだけの指示文、事故を防ぐための決まりまで。</p></article>
+    <article class="card"><span class="no">特典3</span><span class="cat">まずこれ作れ①</span>
+      <h3>AI学習を効率化する「動画テキスト化ツール」丸投げ開発ノート</h3>
+      <p>講座や録画の動画を文字にして、AIと復習するための道具「PATTI SCRIBE」を、プログラムを書かずにAIに作ってもらった記録。つまずきと直し方、そのまま使える指示文つき。</p></article>
+    <article class="card"><span class="no">特典4</span><span class="cat">まずこれ作れ②</span>
+      <h3>AI学習を効率化する「Webサイト全画面スクショ」丸投げ開発ノート</h3>
+      <p>長いWebページを、上から下まで1枚の画像・PDFにする道具「PATTI SHOT」の開発ノート。うまくいかなかったことも正直に書き、同じ穴に落ちないための指示文をつけました。</p></article>
+    <article class="card five"><span class="no">特典5</span><span class="cat">誰でもOK</span>
+      <h3>オンライン個別相談の無料権</h3>
+      <p>60〜90分、あなたのお話を聞いて整理し、AIのちがいやボクの実際の画面をお見せします。お話の内容は、あなた専用の「ナレッジファイル」にしてお渡しします（ご希望の方だけ）。</p>
+      <p class="fine">※相談の中で、ボクのAI講座（有料）のご案内をすることがあります。受けるかどうかは自由です。</p></article>
+  </div>
+  <p class="order">おすすめの順番：特典1→2で土台をつくって、特典3・4で道具を作ってみる。つまずいたら、特典5でボクに聞いてください。</p>
+  <a class="cta" href="https://lin.ee/yb89J2Z" target="_blank" rel="noopener">公式LINEで5大特典を受け取る<small>友だち追加だけ・無料</small></a>
+</section>
+
+<section class="sec">
+  <h2><span class="pix">PROFILE</span>ボクの紹介</h2>
+  <div class="prof">
+    <div>
+      <p class="name">池本 将（いけもと しょう）</p>
+      <p class="role">合同会社スタジオパッチ 代表／テレビ番組のディレクター／絵本『おばけのパッチ』の作者／娘のパパ<br>Instagram：@ai_papa_ehon</p>
+    </div>
+    <ul>
+      <li>テレビ番組をつくる仕事を、10年以上続けています</li>
+      <li>2021年、テレビ番組のディレクターをしていたボクが、突然、絵を描き始めました</li>
+      <li>2022年、クラウドファンディングで89人の方に応援していただき、絵本『おばけのパッチ』を出版しました</li>
+      <li>2024年、合同会社スタジオパッチを設立しました</li>
+      <li>2026年4月にClaudeというAIに出会い、7月から本格的に開発を始めました。本職のエンジニアではありませんが、AIといっしょに、アプリを約10個（うち8個は無料で公開）、ホームページを2つ作ってきました</li>
+    </ul>
+    <div class="creed">ボクたちの理念は「創造を通して、子どもと挑戦する人に、新しい可能性とおもしろい未来を贈る」です。この特典も、その1つとして作りました。</div>
+  </div>
+</section>
+
+<section class="sec">
+  <h2><span class="pix">HOW TO GET</span>受け取り方</h2>
+  <ol class="steps">
+    <li><b>公式LINEを友だち追加</b>Instagram（@ai_papa_ehon）のプロフィールのリンク、またはこのページのボタンから。</li>
+    <li><b>届いたメッセージから、特典を開く</b>友だち追加のすぐあとに、5大特典のページが届きます。トーク画面の下のメニューからも、1つずつ開けます。</li>
+    <li><b>特典5の個別相談は「相談」と送るだけ</b>公式LINEのトークに「相談」と送ると、申し込みの案内が届きます。</li>
+  </ol>
+</section>
+
+<section class="sec faq">
+  <h2><span class="pix">FAQ</span>よくある質問</h2>
+  <details><summary>本当に無料ですか？</summary><p>はい。5つの特典は、すべて無料です。何かを買うことが、受け取る条件にはなっていません。ただ、特典5の個別相談の中で、ボクのAI講座（有料）のご案内をすることがあります。受けるかどうかは自由です。</p></details>
+  <details><summary>AIをほとんど使ったことがなくても大丈夫ですか？</summary><p>大丈夫です。ChatGPTにたまに質問するくらいの方を思い浮かべて書いています。むずかしい言葉は、出てきたところで短く説明しています。</p></details>
+  <details><summary>パソコンや、ほかにお金は必要ですか？</summary><p>読むだけなら、どの特典もスマホで大丈夫です。特典2〜4のとおりに手を動かすときは、パソコンと、Claude の有料プランが必要です。特典2〜4で使う「Claude Code」（開発用のAI）は、無料プランには含まれていないためです。いちばん安い Pro プランで、月払いなら月20ドル（税別）です（2026年9月26日時点）。この料金は Anthropic 社に払うもので、ボクにいただくお金ではありません。</p></details>
+  <details><summary>個別相談で、しつこく勧誘されませんか？</summary><p>されません。講座のご案内をするのは、相談の最後のほうだけです（始めるときにも、そのことをお伝えします）。その場で決めていただくことも、お支払いをお願いすることもありません。「いりません」と言っていただいたら、その場でも、あとからも、ボクから講座をおすすめすることはしません。</p></details>
+  <details><summary>あとで登録を解除できますか？</summary><p>はい。公式LINEでは特典のほかに、AIのヒントやセミナーなどのお知らせもお送りしますが、いつでもブロックしていただいて大丈夫です。</p></details>
+</section>
+
+<section class="sec">
+  <h2><span class="pix">NOTE</span>注意書き</h2>
+  <ul class="fineprint">
+    <li>5つの特典は無料です。何かの購入を条件にするものではありません。</li>
+    <li>特典5の個別相談の中で、ボクのAI講座（有料）のご案内をすることがあります。受けるかどうかは自由です。</li>
+    <li>特典の内容は、ボク（池本）が自分で試したやり方をまとめたものです。同じ結果が出ることや、収入が増えることを約束するものではありません。</li>
+    <li>AIサービスの画面・料金・機能は、予告なく変わることがあります。各特典には、確認した日付を書いています。</li>
+    <li>Claude などのサービスの料金は、それぞれの会社にお支払いいただくものです。</li>
+    <li>AIにお仕事やご家族のことを入れるときは、学習に使わない設定になっているかを確かめてから入れてください。</li>
+    <li>公式LINEでは、特典のほかに、AIの使い方のヒントやセミナー・個別相談などのお知らせをお送りします。いつでもブロックできます。</li>
+    <li>公式LINEで教えていただいたこと（お名前・ご相談の内容など）は、特典のお届けと、個別相談の日程調整・相談（相談の中でご希望があったときの講座の資料のお届けを含みます）のためにだけ使います。</li>
+    <li>運営：合同会社スタジオパッチ（代表 池本 将）</li>
+    <li>記載の会社名・サービス名は、各社の商標または登録商標です。</li>
+  </ul>
+</section>
+
+<div class="sticky" id="sticky"><a class="cta" href="https://lin.ee/yb89J2Z" target="_blank" rel="noopener">公式LINEで5大特典を受け取る</a></div>
+<footer><span class="pix">STUDIO PATTI</span>合同会社スタジオパッチ　池本 将</footer>
+<script>
+(function(){var s=document.getElementById('sticky');var cs=[].slice.call(document.querySelectorAll('.cta')).filter(function(c){return !s.contains(c)});
+if(!('IntersectionObserver' in window)||!s||!cs.length)return;var seen=new Set();
+var io=new IntersectionObserver(function(es){es.forEach(function(e){e.isIntersecting?seen.add(e.target):seen.delete(e.target)});s.classList.toggle('off',seen.size>0)});cs.forEach(function(c){io.observe(c)})})();
+</script>
+</body>
+</html>
