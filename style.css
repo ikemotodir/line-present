@@ -30,8 +30,8 @@ img{max-width:100%}
 .sprite{image-rendering:pixelated;position:absolute;right:14px;bottom:0}
 .patti{width:96px;height:144px;background:url(img/patti_front_shaded.png) 0 0/1152px 144px no-repeat;animation:patti 1.6s steps(12) infinite}
 @keyframes patti{to{background-position:-1152px 0}}
-.mayu{width:80px;height:144px;background:url(img/mayu_stand.png) 0 0/320px 144px no-repeat;animation:mayu 1.4s steps(4) infinite}
-@keyframes mayu{to{background-position:-320px 0}}
+.mayu{width:60px;height:144px;background:url(img/mayu_frontright.png) 0 0/720px 144px no-repeat;animation:mayu 1.2s steps(12) infinite}
+@keyframes mayu{to{background-position:-720px 0}}
 .band.has-sprite .in{padding-right:96px}
 .band.has-sprite .patti{width:72px;height:108px;background-size:864px 108px;animation-name:patti-s;right:10px}
 @keyframes patti-s{to{background-position:-864px 0}}
@@ -69,3 +69,5 @@ footer{border-top:1px solid var(--rule);color:var(--muted);font-size:13px;text-a
 footer .pix{display:block;font-size:12px;margin-bottom:4px}
 :focus-visible{outline:3px solid var(--yellow);outline-offset:2px}
 @media (prefers-reduced-motion: reduce){.patti,.mayu{animation:none}}
+.article .get{display:block;text-align:center;text-decoration:none;font-weight:900;font-size:17px;padding:14px 16px;border-radius:999px;background:#06c755;color:#fff;box-shadow:0 4px 0 #049a42;margin:14px 0 6px}
+.article .get:active{transform:translateY(3px);box-shadow:0 1px 0 #049a42}
