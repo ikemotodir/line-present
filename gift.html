@@ -3,47 +3,139 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>5大特典の受け取りページ｜STUDIO PATTI</title>
+<title>豪華5大特典 受け取りページ｜STUDIO PATTI</title>
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700;900&family=DotGothic16&family=Silkscreen&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 <style>
-.list{max-width:760px;margin:0 auto;padding:22px 16px 10px;display:grid;gap:12px}
-.item{display:block;text-decoration:none;color:var(--ink);background:var(--paper);border:1px solid var(--rule);border-radius:16px;padding:14px 44px 14px 16px;position:relative}
-.item::after{content:"›";position:absolute;right:16px;top:50%;transform:translateY(-50%);font-size:28px;color:var(--navy)}
-.item .no{font-family:"DotGothic16",monospace;display:inline-block;background:var(--navy);color:#fff;border-radius:6px;padding:1px 10px;font-size:14px}
-.item .cat{font-family:"DotGothic16",monospace;font-size:14px;color:var(--lilac);margin-left:6px}
-.item b{display:block;margin-top:6px;font-size:17px;line-height:1.5}
-.item span.d{display:block;font-size:14px;color:var(--muted);margin-top:2px}
-.item.five .no{background:#06c755}
-.hello{max-width:760px;margin:0 auto;padding:18px 16px 0}
-.hello p{margin:6px 0}
-.order{max-width:760px;margin:6px auto 30px;padding:0 16px}
-.order p{background:var(--yellow-soft);border-radius:12px;padding:12px 14px;margin:0;font-size:15px}
+.hero .in{padding:26px 16px 34px}
+.hero h1{font-size:clamp(26px,7vw,40px);line-height:1.4;margin-top:12px}
+.hero .sub{margin:12px 0 0;font-size:16.5px;line-height:1.85;max-width:30em}
+.hero .stage{position:relative;height:150px;margin-top:6px}
+.hero .stage .patti{right:auto;left:8px}
+.hero .stage .mayu{right:auto;left:112px}
+.sec{max-width:760px;margin:0 auto;padding:26px 16px 4px}
+.sec h2{font-size:clamp(21px,5.4vw,27px);line-height:1.45;margin:0 0 12px;text-wrap:balance}
+.sec h2 .pix{display:block;font-size:13px;color:var(--lilac);letter-spacing:.14em;margin-bottom:2px}
+.lead{margin:0 0 14px}
+.gifts{display:grid;gap:16px}
+.gift{background:var(--paper);border:1px solid var(--rule);border-radius:18px;padding:18px 16px 16px;position:relative;overflow:hidden}
+.gift::before{content:"";position:absolute;inset:0 auto 0 0;width:6px;background:linear-gradient(var(--navy),var(--lilac))}
+.gift .no{font-family:"DotGothic16",monospace;display:inline-block;background:var(--navy);color:#fff;border-radius:6px;padding:1px 10px;font-size:14px}
+.gift .cat{font-family:"DotGothic16",monospace;font-size:14px;color:var(--lilac);margin-left:6px}
+.gift h3{margin:8px 0 6px;font-size:19px;line-height:1.5}
+.gift p{margin:0 0 10px;font-size:15.5px}
+.gift ul.meta{list-style:none;padding:0;margin:0 0 14px;display:flex;flex-wrap:wrap;gap:6px}
+.gift ul.meta li{font-size:13px;background:var(--quote);border-radius:999px;padding:3px 10px}
+.get{display:block;text-align:center;text-decoration:none;font-weight:900;font-size:17px;padding:14px 16px;border-radius:999px;background:var(--navy);color:#fff;box-shadow:0 4px 0 #00327a}
+.get:active{transform:translateY(3px);box-shadow:0 1px 0 #00327a}
+.gift.five .no{background:#06c755}
+.gift.five .get{background:#06c755;box-shadow:0 4px 0 #049a42}
+.gift.five .fine{font-size:13px;color:var(--muted);margin:10px 0 0}
+.gift.five .more{display:block;text-align:center;margin-top:10px;font-size:14px}
+.order{list-style:none;padding:0;margin:0;counter-reset:o}
+.order li{position:relative;background:var(--paper);border:1px solid var(--rule);border-radius:12px;padding:12px 14px 12px 50px;margin:8px 0}
+.order li::before{counter-increment:o;content:counter(o);position:absolute;left:12px;top:11px;width:26px;height:26px;border-radius:50%;background:var(--yellow);color:#1d1b29;font-weight:900;display:flex;align-items:center;justify-content:center;font-size:14px}
+.faq details{background:var(--paper);border:1px solid var(--rule);border-radius:12px;margin:8px 0;padding:0 14px}
+.faq summary{cursor:pointer;font-weight:700;padding:12px 0;list-style:none}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::before{content:"Q. ";color:var(--navy);font-weight:900}
+.faq details p{margin:0 0 12px}
+.me{display:grid;gap:8px;background:var(--paper);border:1px solid var(--rule);border-radius:16px;padding:16px}
+.me .name{font-weight:900;font-size:18px;margin:0}
+.me p{margin:0;font-size:15px}
+.creed{margin-top:4px;padding:10px 12px;border-radius:10px;background:var(--quote);font-weight:700;font-size:14.5px}
+.fineprint{font-size:13px;color:var(--muted);padding-left:1.2em;margin:0}
+.fineprint li{margin:4px 0}
 </style>
 </head>
 <body>
-<header class="band has-sprite">
+<header class="band hero">
   <div class="in">
-    <a class="brand" href="index.html">STUDIO PATTI ／ 5 PRESENTS</a><br>
+    <span class="brand">STUDIO PATTI ／ 5 PRESENTS</span><br>
     <span class="chip">公式LINEに登録してくれたあなたへ</span>
-    <h1>豪華5大特典の受け取りページ</h1>
+    <h1>豪華5大特典<br>受け取りページ</h1>
+    <p class="sub">ご登録ありがとうございます！池本です😊<br>5つの特典は、このページから今すぐ受け取れます。どれもスマホのまま読めるので、気になるものから開いてみてください。</p>
+    <div class="stage" aria-hidden="true"><div class="sprite patti"></div><div class="sprite mayu"></div></div>
   </div>
-  <div class="sprite patti" role="img" aria-label="おばけのパッチ"></div>
 </header>
-<div class="hello">
-  <p>友だち追加、ありがとうございます！池本です。</p>
-  <p>下の5つは、どれもスマホで読めます。気になるものから開いてみてください。</p>
-</div>
-<nav class="list">
-  <a class="item" href="1.html"><span class="no">特典1</span><span class="cat">まずこれやれ①</span><b>AIの「メモリ」に焼きこむ「絶対ルール」10選</b><span class="d">コピーして貼るだけ。AIに毎回言い直さなくてよくなる決まりごと</span></a>
-  <a class="item" href="2.html"><span class="no">特典2</span><span class="cat">まずこれやれ②</span><b>自動で動き出すClaudeの設定ガイド</b><span class="d">決めた時間にClaudeが自分で作業を始める設定と、安全の決まり</span></a>
-  <a class="item" href="3.html"><span class="no">特典3</span><span class="cat">まずこれ作れ①</span><b>「動画テキスト化ツール」丸投げ開発ノート</b><span class="d">PATTI SCRIBE をAIに作ってもらった記録と、そのまま使える指示文</span></a>
-  <a class="item" href="4.html"><span class="no">特典4</span><span class="cat">まずこれ作れ②</span><b>「Webサイト全画面スクショ」丸投げ開発ノート</b><span class="d">PATTI SHOT の開発ノート。うまくいかなかったことも正直に</span></a>
-  <a class="item five" href="5.html"><span class="no">特典5</span><span class="cat">誰でもOK</span><b>オンライン個別相談の無料権</b><span class="d">公式LINEに「相談」と送ると申し込めます</span></a>
-</nav>
-<div class="order"><p>おすすめの順番：特典1→2で土台をつくって、特典3・4で道具を作ってみる。つまずいたら、特典5でボクに聞いてください。</p></div>
+
+<section class="sec" id="gifts">
+  <h2><span class="pix">5 PRESENTS</span>5大特典</h2>
+  <div class="gifts">
+    <article class="gift"><span class="no">特典1</span><span class="cat">まずこれやれ①</span>
+      <h3>AIの「メモリ」に焼きこむ「絶対ルール」10選</h3>
+      <p>AIに毎回同じことを言わなくていいように、最初に覚えておいてもらう決まりごと10個。ボクのAIに実際に入れているルールから選びました。</p>
+      <ul class="meta"><li>読む時間 約7分</li><li>コピーして貼るだけ</li><li>ChatGPTでもClaudeでも</li></ul>
+      <a class="get" href="1.html">特典1を受け取る</a></article>
+
+    <article class="gift"><span class="no">特典2</span><span class="cat">まずこれやれ②</span>
+      <h3>自動で動き出すClaudeの設定ガイド</h3>
+      <p>決めた時間になると、Claudeが自分で作業を始めてくれる設定の手引き。いちばんかんたんな方法と、貼るだけの指示文、事故を防ぐ決まりまで。</p>
+      <ul class="meta"><li>読む時間 約8分</li><li>貼るだけの指示文つき</li><li>Claudeの有料プランで使う機能</li></ul>
+      <a class="get" href="2.html">特典2を受け取る</a></article>
+
+    <article class="gift"><span class="no">特典3</span><span class="cat">まずこれ作れ①</span>
+      <h3>AI学習を効率化する「動画テキスト化ツール」丸投げ開発ノート</h3>
+      <p>講座や録画の動画を文字にして、AIと復習するための道具「PATTI SCRIBE」を、プログラムを書かずにAIに作ってもらった記録です。</p>
+      <ul class="meta"><li>読む時間 約9分</li><li>そのまま使える指示文つき</li><li>完成品（無料）の入手先つき</li></ul>
+      <a class="get" href="3.html">特典3を受け取る</a></article>
+
+    <article class="gift"><span class="no">特典4</span><span class="cat">まずこれ作れ②</span>
+      <h3>AI学習を効率化する「Webサイト全画面スクショ」丸投げ開発ノート</h3>
+      <p>長いWebページを、上から下まで1枚の画像・PDFにする道具「PATTI SHOT」の開発ノート。うまくいかなかったことも正直に書きました。</p>
+      <ul class="meta"><li>読む時間 約9分</li><li>つまずかないための指示文つき</li><li>完成品（無料）の入手先つき</li></ul>
+      <a class="get" href="4.html">特典4を受け取る</a></article>
+
+    <article class="gift five"><span class="no">特典5</span><span class="cat">誰でもOK</span>
+      <h3>オンライン個別相談の無料権</h3>
+      <p>60〜90分、あなたのお話を聞いて整理し、AIのちがいやボクの実際の画面をお見せします。お話の内容は、あなた専用の「ナレッジファイル」にしてお渡しします（ご希望の方だけ）。</p>
+      <ul class="meta"><li>オンライン・無料</li><li>開始は20時まで</li></ul>
+      <a class="get" href="https://line.me/R/oaMessage/%40422hvgbq/?%E7%9B%B8%E8%AB%87">個別相談を申し込む</a>
+      <p class="fine">ボタンを押すとLINEのトークが開き、「相談」と入力された状態になります。そのまま送ってください。<br>※相談の中で、ボクのAI講座（有料）のご案内をすることがあります。受けるかどうかは自由です。</p>
+      <a class="more" href="5.html">相談の内容をくわしく見る</a></article>
+  </div>
+</section>
+
+<section class="sec">
+  <h2><span class="pix">HOW TO USE</span>おすすめの受け取り順</h2>
+  <ol class="order">
+    <li><b>特典1</b>で、AIに覚えてもらう「決まりごと」を入れる</li>
+    <li><b>特典2</b>で、AIが自分で動き出す土台をつくる</li>
+    <li><b>特典3・4</b>で、学びに役立つ道具をAIに作ってもらう</li>
+    <li>つまずいたら、<b>特典5</b>でボクに聞いてください</li>
+  </ol>
+</section>
+
+<section class="sec faq">
+  <h2><span class="pix">FAQ</span>よくある質問</h2>
+  <details><summary>スマホだけで大丈夫ですか？</summary><p>読むだけなら、どの特典もスマホで大丈夫です。特典2〜4のとおりに手を動かすときは、パソコンがあると進めやすいです。</p></details>
+  <details><summary>お金はかかりますか？</summary><p>5つの特典は、すべて無料です。ただ、特典2〜4で使う「Claude Code」（開発用のAI）は、Claudeの有料プランで使える機能です。いちばん安いProプランで、月払いなら月20ドル（税別・2026年9月26日時点）。この料金はAnthropic社に払うもので、ボクにいただくお金ではありません。</p></details>
+  <details><summary>読んでいて分からないところがあったら？</summary><p>公式LINEのトークに、そのまま質問を送ってください。ボクが直接お返事します。じっくり聞きたいときは、特典5の個別相談もどうぞ。</p></details>
+  <details><summary>個別相談で、しつこく勧誘されませんか？</summary><p>されません。講座のご案内をするのは相談の最後のほうだけで、始めるときにもそのことをお伝えします。その場で決めていただくことも、お支払いをお願いすることもありません。「いりません」と言っていただいたら、あとからもおすすめしません。</p></details>
+</section>
+
+<section class="sec">
+  <h2><span class="pix">PROFILE</span>この特典を作った人</h2>
+  <div class="me">
+    <p class="name">池本 将（いけもと しょう）</p>
+    <p>合同会社スタジオパッチ 代表／テレビ番組のディレクター／絵本『おばけのパッチ』の作者／娘のパパ。2026年4月にClaudeに出会い、本職のエンジニアではないけれど、AIといっしょにアプリを約10個（うち8個は無料で公開）作ってきました。</p>
+    <div class="creed">理念：「創造を通して、子どもと挑戦する人に、新しい可能性とおもしろい未来を贈る」</div>
+  </div>
+</section>
+
+<section class="sec">
+  <h2><span class="pix">NOTE</span>注意書き</h2>
+  <ul class="fineprint">
+    <li>5つの特典は無料です。何かの購入を条件にするものではありません。</li>
+    <li>特典の内容は、ボク（池本）が自分で試したやり方をまとめたものです。同じ結果が出ることや、収入が増えることを約束するものではありません。</li>
+    <li>AIサービスの画面・料金・機能は、予告なく変わることがあります。各特典には、確認した日付を書いています。</li>
+    <li>AIにお仕事やご家族のことを入れるときは、学習に使わない設定になっているかを確かめてから入れてください。</li>
+    <li>運営：合同会社スタジオパッチ（代表 池本 将）。記載の会社名・サービス名は、各社の商標または登録商標です。</li>
+  </ul>
+</section>
+
 <footer><span class="pix">STUDIO PATTI</span>合同会社スタジオパッチ　池本 将</footer>
 </body>
 </html>
