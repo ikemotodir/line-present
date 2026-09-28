@@ -48,12 +48,18 @@
 .creed{margin-top:4px;padding:10px 12px;border-radius:10px;background:var(--quote);font-weight:700;font-size:14.5px}
 .fineprint{font-size:13px;color:var(--muted);padding-left:1.2em;margin:0}
 .fineprint li{margin:4px 0}
+.prep{background:var(--yellow-soft);border-radius:16px;padding:14px 16px 16px}
+.prep p{margin:0 0 10px;font-size:15px;font-weight:700;line-height:1.7}
+.prep .get{font-size:16px;padding:12px 16px;margin-top:10px}
+.prep .get.ghost{border:2px solid var(--link);background:var(--paper);color:var(--link);box-shadow:none}
+.prep small{display:block;margin-top:10px;font-size:12.5px;color:var(--muted);font-weight:500}
+.gift.five .hint{font-size:14px;text-align:center;margin:10px 0 0;font-weight:700}
 .tip{background:var(--yellow-soft);border-radius:12px;padding:12px 14px;margin:0 0 14px;font-size:15px}
 .company{background:linear-gradient(120deg,var(--navy),var(--lilac));color:#fff;margin-top:26px;border:0;text-align:left;padding:0}
 .company .in{max-width:760px;margin:0 auto;padding:26px 16px 30px}
 .company .pix{font-family:"Silkscreen",monospace;font-size:12px;letter-spacing:.14em;opacity:.9;margin:0}
 .company h2{font-size:20px;margin:2px 0 12px;color:#fff}
-.company dl{display:grid;grid-template-columns:6.5em 1fr;gap:6px 12px;margin:0;font-size:14.5px}
+.company dl{display:grid;grid-template-columns:6.5em 1fr;gap:4px 12px;margin:0;font-size:14.5px;line-height:1.5}
 .company dt{opacity:.85}.company dd{margin:0;overflow-wrap:anywhere}
 .company .copy{font-size:12px;opacity:.8;margin:18px 0 0}
 </style>
@@ -68,6 +74,15 @@
     <div class="stage" aria-hidden="true"><div class="sprite patti"></div><div class="sprite mayu"></div></div>
   </div>
 </header>
+
+<section class="sec">
+  <div class="prep">
+    <p>※全特典、Claude Codeが使える状態になっていることが前提です。<br>※Claude Codeを利用するため、特典の受け取りはPCをオススメします。</p>
+    <a class="get" href="https://claude.com/ja/pricing" target="_blank" rel="noopener">Claudeの料金プランを見る</a>
+    <a class="get ghost" href="https://claude.com/ja/download" target="_blank" rel="noopener">Claudeのアプリを入れる</a>
+    <small>Claude Codeは有料プラン（Pro 月20ドル・税別）から使えます。2026年9月28日時点。</small>
+  </div>
+</section>
 
 <section class="sec" id="gifts">
   <div class="gifts">
@@ -94,7 +109,8 @@
     <article class="gift five"><span class="no">特典5</span><span class="cat">誰でもOK</span>
       <h3>オンライン個別相談の優先権</h3>
       <p>登録してくれた方から優先してご案内。60〜90分、AIでどこから楽にできるかを一緒に整理します。</p>
-      <button type="button" class="get" data-open="m-line">個別相談を申し込む</button>
+      <a class="get" href="https://lin.ee/QV4fVfO" target="_blank" rel="noopener">個別無料相談を申し込む</a>
+      <p class="hint">LINEが開いたら「相談」と送ってください</p>
       <p class="fine">※相談の最後に、ボクのAI講座（有料）のご案内をすることがあります。受けるかは自由です。</p>
       <a class="more" href="5.html">くわしく見る</a></article>
   </div>
@@ -103,7 +119,7 @@
 <section class="sec">
   <p class="tip">おすすめは <b>1→2</b> で土台づくり、<b>3・4</b> で道具づくり。つまずいたら <b>5</b> でボクに聞いてください。</p>
   <ul class="fineprint">
-    <li>特典はすべて無料です。特典2〜4で使う Claude Code は、Claudeの有料プラン（Pro 月20ドル・税別・2026年9月26日時点）の機能です。</li>
+    <li>特典はすべて無料です。</li>
     <li>ボクが試したやり方をまとめたもので、同じ結果を約束するものではありません。</li>
   </ul>
 </section>
@@ -124,7 +140,6 @@
     <p class="copy">© 2026 STUDIO PATTI. All rights reserved.</p>
   </div>
 </footer>
-<div class="modal" id="m-line" hidden><div class="sheet line"><div class="bar"><b>公式LINEで「相談」と送ってください</b><button type="button" class="close">とじる</button></div><div class="linebox"><img src="img/line_qr.png" alt="公式LINEのQRコード" width="220" height="220"><a class="get" href="https://lin.ee/QV4fVfO" target="_blank" rel="noopener">LINEを開く</a><p class="url">https://lin.ee/QV4fVfO</p><p>スマホはボタンから、パソコンはQRコードをスマホで読み取ってください。トークで「相談」と送ると、申し込みの案内が届きます。</p></div></div></div>
 <script>
 document.querySelectorAll('[data-open]').forEach(function(b){b.addEventListener('click',function(){var m=document.getElementById(b.getAttribute('data-open'));if(m){m.hidden=false;document.body.style.overflow='hidden'}})});
 document.querySelectorAll('.modal').forEach(function(m){var close=function(){m.hidden=true;document.body.style.overflow=''};m.addEventListener('click',function(e){if(e.target===m)close()});var c=m.querySelector('.close');if(c)c.addEventListener('click',close)});
