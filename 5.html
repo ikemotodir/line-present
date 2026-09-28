@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>【誰でもOK】オンライン個別相談の無料権｜STUDIO PATTI 5大特典</title>
+<title>【誰でもOK】オンライン個別相談の優先権｜STUDIO PATTI 5大特典</title>
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700;900&family=DotGothic16&family=Silkscreen&display=swap" rel="stylesheet">
@@ -14,14 +14,13 @@
   <div class="in">
     <a class="brand" href="gift.html">STUDIO PATTI ／ 5 PRESENTS</a><br>
     <span class="chip">特典 5</span>
-    <h1>【誰でもOK】オンライン個別相談の無料権</h1>
+    <h1>【誰でもOK】<br>オンライン個別相談の優先権</h1>
   </div>
   <div class="sprite patti" role="img" aria-label="おばけのパッチ"></div>
 </header>
 <main class="article">
-<p>60〜90分、オンラインで。あなたのお話を聞いて、AIでどこから楽にできるかを一緒に整理します。</p>
-<p><a class="get" href="https://line.me/R/oaMessage/%40422hvgbq/?%E7%9B%B8%E8%AB%87">個別相談を申し込む</a></p>
-<p>押すとLINEが開き、「相談」と入った状態になります。そのまま送ってください。</p>
+<p>公式LINEに登録してくれた方から、優先してご案内します。60〜90分、オンラインで。あなたのお話を聞いて、AIでどこから楽にできるかを一緒に整理します。</p>
+<button type="button" class="get" data-open="m-line">個別相談を申し込む</button>
 <h2>やること</h2>
 <ul>
 <li>今の悩みを聞いて、一緒に整理</li>
@@ -37,7 +36,7 @@
 <li>教えていただいたことは、日程の調整と相談・まとめ作りにだけ使います</li>
 <li>開始は遅くても20時まで。相談もナレッジファイルも無料です</li>
 </ul>
-<p><a class="get" href="https://line.me/R/oaMessage/%40422hvgbq/?%E7%9B%B8%E8%AB%87">個別相談を申し込む</a></p>
+<button type="button" class="get" data-open="m-line">個別相談を申し込む</button><div class="modal" id="m-line" hidden><div class="sheet line"><div class="bar"><b>公式LINEで「相談」と送ってください</b><button type="button" class="close">とじる</button></div><div class="linebox"><img src="img/line_qr.png" alt="公式LINEのQRコード" width="220" height="220"><a class="get" href="https://lin.ee/QV4fVfO" target="_blank" rel="noopener">LINEを開く</a><p class="url">https://lin.ee/QV4fVfO</p><p>スマホはボタンから、パソコンはQRコードをスマホで読み取ってください。トークで「相談」と送ると、申し込みの案内が届きます。</p></div></div></div>
 </main>
 <nav class="back"><a href="gift.html">← 5大特典の一覧へもどる</a></nav>
 <footer><span class="pix">STUDIO PATTI</span>合同会社スタジオパッチ　池本 将</footer>
@@ -50,6 +49,21 @@ document.querySelectorAll('.copybox .copy').forEach(function(b){
     try{navigator.clipboard.writeText(t).then(ok,ng)}catch(e){ng()}
   });
 });
+
+document.querySelectorAll('[data-open]').forEach(function(b){
+  b.addEventListener('click',function(){var m=document.getElementById(b.getAttribute('data-open'));if(m){m.hidden=false;document.body.style.overflow='hidden'}});
+});
+document.querySelectorAll('.modal').forEach(function(m){
+  var close=function(){m.hidden=true;document.body.style.overflow=''};
+  m.addEventListener('click',function(e){if(e.target===m)close()});
+  var c=m.querySelector('.close');if(c)c.addEventListener('click',close);
+  var cp=m.querySelector('.copy2');
+  if(cp)cp.addEventListener('click',function(){var t=m.querySelector('pre').textContent;
+    var ok=function(){cp.textContent='コピーしました';setTimeout(function(){cp.textContent='コピー'},1800)};
+    var ng=function(){var r=document.createRange();r.selectNodeContents(m.querySelector('pre'));var s=getSelection();s.removeAllRanges();s.addRange(r);cp.textContent='選択しました'};
+    try{navigator.clipboard.writeText(t).then(ok,ng)}catch(e){ng()}});
+});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')document.querySelectorAll('.modal').forEach(function(m){m.hidden=true;document.body.style.overflow=''})});
 </script>
 </body>
 </html>

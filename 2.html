@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>【まずこれやれ②】自動で動き出すClaudeの設定ガイド｜STUDIO PATTI 5大特典</title>
+<title>【まずこれやれ②】自動で動き出すClaude設定ガイド｜STUDIO PATTI 5大特典</title>
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700;900&family=DotGothic16&family=Silkscreen&display=swap" rel="stylesheet">
@@ -14,38 +14,76 @@
   <div class="in">
     <a class="brand" href="gift.html">STUDIO PATTI ／ 5 PRESENTS</a><br>
     <span class="chip">特典 2</span>
-    <h1>【まずこれやれ②】自動で動き出すClaudeの設定ガイド</h1>
+    <h1>【まずこれやれ②】<br>自動で動き出すClaude設定ガイド</h1>
   </div>
   <div class="sprite patti" role="img" aria-label="おばけのパッチ"></div>
 </header>
 <main class="article">
-<p>ボクのClaudeは、ボクの記事と学んだこと<strong>約700万文字</strong>を覚えています。だから「言うだけ」で、ボクらしく動いてくれます。その作り方です。</p>
-<h2>① 自分の文章を取り出す（パソコンで）</h2>
+<p>Claude Code は、ふだん作業のたびに「やっていい？」と聞いてきます。これを止めて、<strong>任せたら最後まで自動で動く</strong>ようにする設定です。リスクと守り方もセットで。</p>
+<div class="maru"><a class="get" href="files/全自動設定_丸投げ.md" download>丸投げファイルをダウンロード</a><button type="button" class="get ghost" data-open="m-全自動設定_丸投げ">中身を見る・コピーする</button></div><div class="modal" id="m-全自動設定_丸投げ" hidden><div class="sheet"><div class="bar"><b>全自動設定_丸投げ.md</b><button type="button" class="copy2">コピー</button><button type="button" class="close">とじる</button></div><pre># 全自動で動く設定 ― Claude Code への丸投げ指示書
+
+あなた（Claude Code）への依頼です。私のパソコンの Claude Code を、**いちいち許可を聞かずに最後まで自動で進める**設定にしてください。そのかわり、事故が起きにくいように守りの設定も一緒に入れてください。私はプログラムが分かりません。途中で質問せず、最後まで進めてください。
+
+## やってほしいこと
+1. ユーザー用の設定ファイル `~/.claude/settings.json` を開く（Windows なら `%USERPROFILE%\.claude\settings.json`）。無ければ作る。書き込むときに許可の画面が出たら、私に「はい」を押すよう1行で伝える。
+2. 変更前に、元のファイルを日付つきでコピーして残す（例: `settings.json.bak-20260928`）。
+3. すでにある設定は消さずに、次を足す（JSON の形を壊さない）。
+   - `permissions.defaultMode` を `"bypassPermissions"` にする（新しいフォルダでは、許可を聞かないモードで始まる。前に別のモードを選んだフォルダは、そのモードのまま）。
+   - **毎回確認させる操作**（`permissions.ask`）：
+     - `Bash(rm *)`（ファイルの削除）
+     - `Bash(git push *)`（外への送信）
+     - `Edit(~/.claude/settings.json)`（この設定そのものの書き換え）
+     - Windows なら `PowerShell(Remove-Item *)`・`PowerShell(git push *)` も
+   - **絶対にやらせない操作**（`permissions.deny`）：
+     - `Bash(git push *--force*)`・`Bash(git reset --hard *)`・`Bash(sudo *)`
+     - Windows なら `PowerShell(git push *--force*)`・`PowerShell(git reset --hard *)` も
+     - パスワードや鍵のファイル：`Read(**/.env)`・`Read(**/.env.*)`・`Read(~/.ssh/**)`
+   - 書き方は、必ず公式ドキュメント https://code.claude.com/docs/ja/permissions で確かめてから書く。確かめられなかった項目は入れずに「未確認」として報告する。
+4. サンドボックス（コマンドが触れる範囲をOSで制限する機能）は、公式ドキュメント https://code.claude.com/docs/ja/sandboxing によると macOS・Linux・WSL2 だけで使える。
+   - Mac なら有効にする。
+   - Windows（WSL2 を使っていない）なら設定に入れず、「このパソコンでは使えない」と報告する（入れても効かないのに、守られていると思い込むのを防ぐため）。
+5. 書き終わったら、ファイルを読み直して、JSON として正しいか・設定が入っているかを確かめる。
+6. 最後に、次を専門用語なしで短く伝える。
+   - 何を変えたか（3行以内）
+   - 元に戻す方法（コピーを元に戻すだけ）
+   - 私がアプリの画面で自分でやる所（下の「画面でやること」）
+
+## 画面でやること（私が自分でやる。あなたは案内だけ）
+1. 設定の「Claude Code」の中にある、権限をバイパスするモードを許可するスイッチをオンにする（公式ヘルプの英語表記は「Allow bypass permissions mode」）。これを入れないと、モードの選択肢に出てきません。
+2. Code の画面のモード選択で「権限をバイパス」を選ぶ。
+3. 設定の「プライバシー」で、会話をAIの改善に使うスイッチ（ボクの画面では「AIモデルの改善に協力する」）をオフにする。オフにすると、会話の保管期間が短くなり、学習に使われません。
+4. 夜中など、パソコンを離れている間も動かしたいときは、設定の中の、パソコンをスリープさせない設定をオンにする（公式の英語表記は Desktop app → General の「Keep computer awake」）。アプリは開いたまま、ノートパソコンのふたは閉じない。
+
+## 大事な注意（私に必ず伝えること）
+- このモードは、聞かずにファイルの削除・コマンドの実行・ネットへの接続までします。公式ドキュメントも「損害を起こせない、コンテナや仮想マシンのような切り離された環境でだけ使うように」と注意しています。
+- 読んだWebページの中に仕込まれた悪い指示にも、ほぼ無防備です。自分の設定ファイルも書き換えられます（だから上で確認させる操作に入れています）。
+- 禁止リストも完全な壁ではありません。別の書き方のコマンドや、プログラム経由の読み書きはすり抜けることがあります。大事なデータはバックアップを取り、パスワードやAPIキーを作業フォルダに置かないでください。
+- Windows では、コマンドが届く範囲をOSで制限する壁（サンドボックス）がありません。
+- 心配なら、確認を減らしつつ安全チェックが残る「自動」モードが、公式のおすすめです。
+</pre></div></div>
+<h2>① 丸投げで入る設定（Claude Code が自分でやる）</h2>
 <ul>
-<li><strong>note</strong>：右上のアイコン →「自分の記事」→「エクスポート」→「エクスポートを開始」。3日以内にメールが届きます</li>
-<li><strong>Facebook</strong>：右上の写真 →「設定とプライバシー」→「設定」→「アカウントセンター」→「あなたの情報とアクセス許可」→「あなたの情報をエクスポート」→「エクスポートを作成」。形式は JSON、文章の入った項目だけを選ぶ</li>
-<li><strong>Instagram</strong>：左下「その他」→「設定」→「アカウントセンター」→ あとはFacebookと同じ。<strong>DMは選ばない</strong>（相手の文章が入るため）</li>
+<li>許可を聞かずに進むモード（権限をバイパス）で、毎回始まるようにする</li>
+<li>そのかわり、削除と外への送信は毎回確認。履歴の上書き・管理者権限・パスワードの読み取りは禁止</li>
+<li>Macならサンドボックス（コマンドが触れる範囲の制限）も入れる。Windowsでは使えません</li>
+<li>変更前の設定はコピーして残す（いつでも元に戻せる）</li>
 </ul>
-<h2>② チャットで使うなら →「ナレッジ」</h2>
-<p>Claudeで「プロジェクト」を作り、ファイル欄の「+」から、取り出した文章を入れます。そのプロジェクトの中のチャットは、全部これを読んで答えます。下の文は「プロジェクト指示」に貼ります。</p>
-<div class="copybox"><button type="button" class="copy">コピー</button><pre>このプロジェクトのファイルは、私がこれまで書いてきた文章です。
-私の考え方・言葉づかい・大事にしていることを読み取り、私が書いたように答えてください。
-事実や数字には、どのファイルに書いてあるかを添えてください。</pre></div>
-<h2>③ Claude Codeで使うなら →「スキル」</h2>
-<p>スキルは、Claude Codeが必要なときだけ読む「自分専用の資料」です。量が多くても軽く動きます。取り出したzipを1つのフォルダに入れ、そのフォルダでClaude Codeを開いて、下を貼ります（Windows・Mac共通）。</p>
-<div class="copybox"><button type="button" class="copy">コピー</button><pre>このフォルダに、私のnote・Facebook・Instagramから書き出したデータ（zip）があります。
-1. zipを開き、私が書いた本文だけを取り出す（写真・動画・他の人のメッセージは除く。文字化けは直す）
-2. 年月ごとに整理して、テキストファイルにまとめる
-3. それを資料にして、ユーザー用のスキル「me」を ~/.claude/skills/me/ に作る
-   （説明には「ユーザー本人の考え方・経歴・言葉づかいを確かめるときに使う」と書く）
-4. 資料を全部読んで、私の「大事にしていること」「よく使う言葉」「経歴」を SKILL.md にまとめる
-5. 最後に、何を作ったかを専門用語なしで3行で教える</pre></div>
-<h2>ボクの場合</h2>
-<p>自分の記事、note、学んだ講座や本を、分野ごとに<strong>10個のスキル</strong>にしています。特典1の絶対ルールと組み合わせると、「ボクならこうする」で動いてくれます。</p>
-<blockquote><p>渡す前に、Claudeの設定「プライバシー」の「AIモデルの改善に協力する」をオフに。お客さんや他の人のメッセージは入れないでください。</p></blockquote>
+<h2>② 自分で切り替える所（アプリの画面）</h2>
+<ul>
+<li><strong>設定の「Claude Code」</strong>：権限をバイパスするモードを許可するスイッチをオン（公式の英語表記は「Allow bypass permissions mode」）。これが無いと選べません</li>
+<li><strong>Code のモード</strong>：「自動」→「権限をバイパス」</li>
+<li><strong>設定 →「プライバシー」</strong>：「AIモデルの改善に協力する」をオフ（会話が学習に使われません）</li>
+<li><strong>夜中も動かすなら</strong>：設定の中の、スリープさせない設定をオン（公式の英語表記は Desktop app → General の「Keep computer awake」）</li>
+</ul>
+<h2>リスクと守り方</h2>
+<ul>
+<li>「権限をバイパス」は、聞かずに削除・実行・ネット接続までします。公式も「壊れても困らない、切り離した環境で使って」と注意しています</li>
+<li>だから ①作業用のフォルダを分ける ②大事なデータはバックアップ ③パスワードやAPIキーをフォルダに置かない ④公開・送信・お金は、特典1のルール3で必ず確認させる</li>
+<li>禁止リストも完全な壁ではありません。不安なら、安全チェックが残る「自動」モードが公式のおすすめです</li>
+</ul>
 <h2>出典</h2>
 <ul>
-<li><a href="https://code.claude.com/docs/ja/skills" target="_blank" rel="noopener">Claude Code：スキル</a>・<a href="https://support.claude.com/en/articles/9519177-how-can-i-create-and-manage-projects" target="_blank" rel="noopener">Claudeヘルプ：プロジェクト</a>（2026-09-26確認）。note・Facebook・Instagramの手順は2026-09-25に実際の画面で確認</li>
+<li><a href="https://code.claude.com/docs/ja/permissions" target="_blank" rel="noopener">Claude Code：権限</a>（2026-09-28確認）。モードの名前はボクの画面の表記</li>
 </ul>
 </main>
 <nav class="back"><a href="gift.html">← 5大特典の一覧へもどる</a></nav>
@@ -59,6 +97,21 @@ document.querySelectorAll('.copybox .copy').forEach(function(b){
     try{navigator.clipboard.writeText(t).then(ok,ng)}catch(e){ng()}
   });
 });
+
+document.querySelectorAll('[data-open]').forEach(function(b){
+  b.addEventListener('click',function(){var m=document.getElementById(b.getAttribute('data-open'));if(m){m.hidden=false;document.body.style.overflow='hidden'}});
+});
+document.querySelectorAll('.modal').forEach(function(m){
+  var close=function(){m.hidden=true;document.body.style.overflow=''};
+  m.addEventListener('click',function(e){if(e.target===m)close()});
+  var c=m.querySelector('.close');if(c)c.addEventListener('click',close);
+  var cp=m.querySelector('.copy2');
+  if(cp)cp.addEventListener('click',function(){var t=m.querySelector('pre').textContent;
+    var ok=function(){cp.textContent='コピーしました';setTimeout(function(){cp.textContent='コピー'},1800)};
+    var ng=function(){var r=document.createRange();r.selectNodeContents(m.querySelector('pre'));var s=getSelection();s.removeAllRanges();s.addRange(r);cp.textContent='選択しました'};
+    try{navigator.clipboard.writeText(t).then(ok,ng)}catch(e){ng()}});
+});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')document.querySelectorAll('.modal').forEach(function(m){m.hidden=true;document.body.style.overflow=''})});
 </script>
 </body>
 </html>

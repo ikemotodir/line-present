@@ -71,3 +71,20 @@ footer .pix{display:block;font-size:12px;margin-bottom:4px}
 @media (prefers-reduced-motion: reduce){.patti,.mayu{animation:none}}
 .article .get{display:block;text-align:center;text-decoration:none;font-weight:900;font-size:17px;padding:14px 16px;border-radius:999px;background:#06c755;color:#fff;box-shadow:0 4px 0 #049a42;margin:14px 0 6px}
 .article .get:active{transform:translateY(3px);box-shadow:0 1px 0 #049a42}
+/* 丸投げファイルのボタンと、中身・LINEを見せる窓 */
+.maru{display:grid;gap:10px;margin:14px 0}
+.article .get.ghost,.get.ghost{background:var(--paper);color:var(--navy);border:2px solid var(--navy);box-shadow:none}
+button.get{width:100%;font-family:inherit;cursor:pointer;border:0}
+.modal{position:fixed;inset:0;background:rgba(10,8,20,.72);z-index:50;display:flex;align-items:center;justify-content:center;padding:16px}
+.modal[hidden]{display:none}
+.modal .sheet{background:var(--paper);color:var(--ink);border-radius:16px;width:min(720px,100%);max-height:88vh;display:flex;flex-direction:column;overflow:hidden}
+.modal .bar{display:flex;gap:8px;align-items:center;padding:10px 12px;border-bottom:1px solid var(--rule)}
+.modal .bar b{flex:1;font-size:14px;overflow-wrap:anywhere}
+.modal .bar button{appearance:none;border:0;border-radius:8px;padding:6px 12px;font:inherit;font-size:13px;font-weight:700;cursor:pointer;background:var(--quote);color:var(--ink)}
+.modal .bar .copy2{background:var(--navy);color:#fff}
+.modal pre{margin:0;padding:14px;overflow:auto;white-space:pre-wrap;font-family:inherit;font-size:14px;line-height:1.75}
+.linebox{padding:16px;text-align:center;overflow:auto}
+.linebox img{display:block;margin:0 auto 12px;width:220px;height:220px;border-radius:12px;background:#fff}
+.linebox .get{background:#06c755;box-shadow:0 4px 0 #049a42;max-width:320px;margin:0 auto}
+.linebox .url{font-size:13px;color:var(--muted);margin:10px 0 4px;overflow-wrap:anywhere}
+.linebox p{font-size:14px;margin:6px 0 0}

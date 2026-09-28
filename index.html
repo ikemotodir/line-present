@@ -49,6 +49,13 @@
 .fineprint{font-size:13px;color:var(--muted);padding-left:1.2em;margin:0}
 .fineprint li{margin:4px 0}
 .tip{background:var(--yellow-soft);border-radius:12px;padding:12px 14px;margin:0 0 14px;font-size:15px}
+.company{background:linear-gradient(120deg,var(--navy),var(--lilac));color:#fff;margin-top:26px;border:0;text-align:left;padding:0}
+.company .in{max-width:760px;margin:0 auto;padding:26px 16px 30px}
+.company .pix{font-family:"Silkscreen",monospace;font-size:12px;letter-spacing:.14em;opacity:.9;margin:0}
+.company h2{font-size:20px;margin:2px 0 12px;color:#fff}
+.company dl{display:grid;grid-template-columns:6.5em 1fr;gap:6px 12px;margin:0;font-size:14.5px}
+.company dt{opacity:.85}.company dd{margin:0;overflow-wrap:anywhere}
+.company .copy{font-size:12px;opacity:.8;margin:18px 0 0}
 </style>
 </head>
 <body>
@@ -66,29 +73,29 @@
   <div class="gifts">
     <article class="gift"><span class="no">特典1</span><span class="cat">まずこれやれ①</span>
       <h3>AIの「メモリ」に焼きこむ「絶対ルール」10選</h3>
-      <p>コピペで貼るだけ。AIに毎回言い直さなくてよくなります。</p>
+      <p>Claude Codeに丸投げするだけ。毎回読まれる場所に、自分で焼きこみます。</p>
       <a class="get" href="1.html">特典1を受け取る</a></article>
 
     <article class="gift"><span class="no">特典2</span><span class="cat">まずこれやれ②</span>
-      <h3>自動で動き出すClaudeの設定ガイド</h3>
-      <p>自分の記事をAIに覚えさせて、「言うだけ」で自分らしく動くClaudeに。</p>
+      <h3>自動で動き出すClaude設定ガイド</h3>
+      <p>許可を聞かずに最後まで自動で動く設定と、そのリスク・守り方。</p>
       <a class="get" href="2.html">特典2を受け取る</a></article>
 
     <article class="gift"><span class="no">特典3</span><span class="cat">まずこれ作れ①</span>
-      <h3>AI学習を効率化する「動画テキスト化ツール」丸投げ開発ノート</h3>
-      <p>コピペすると、あなたのClaude Codeが文字起こしアプリを作ります。</p>
+      <h3>AI学習を効率化「動画テキスト化ツール」丸投げ開発ノート</h3>
+      <p>丸投げすると、あなたのClaude Codeが文字起こしアプリを作ります。</p>
       <a class="get" href="3.html">特典3を受け取る</a></article>
 
     <article class="gift"><span class="no">特典4</span><span class="cat">まずこれ作れ②</span>
-      <h3>AI学習を効率化する「Webサイト全画面スクショ」丸投げ開発ノート</h3>
-      <p>コピペすると、あなたのClaude Codeが全画面スクショの道具を作ります。</p>
+      <h3>AI学習を効率化「Webサイト全画面スクショ」丸投げ開発ノート</h3>
+      <p>丸投げすると、あなたのClaude Codeが全画面スクショの道具を作ります。</p>
       <a class="get" href="4.html">特典4を受け取る</a></article>
 
     <article class="gift five"><span class="no">特典5</span><span class="cat">誰でもOK</span>
-      <h3>オンライン個別相談の無料権</h3>
-      <p>60〜90分、あなたのお話を聞いて、AIでどこから楽にできるかを一緒に整理します。</p>
-      <a class="get" href="https://line.me/R/oaMessage/%40422hvgbq/?%E7%9B%B8%E8%AB%87">個別相談を申し込む</a>
-      <p class="fine">押すとLINEが開き、「相談」と入った状態になります。<br>※相談の最後に、ボクのAI講座（有料）のご案内をすることがあります。受けるかは自由です。</p>
+      <h3>オンライン個別相談の優先権</h3>
+      <p>登録してくれた方から優先してご案内。60〜90分、AIでどこから楽にできるかを一緒に整理します。</p>
+      <button type="button" class="get" data-open="m-line">個別相談を申し込む</button>
+      <p class="fine">※相談の最後に、ボクのAI講座（有料）のご案内をすることがあります。受けるかは自由です。</p>
       <a class="more" href="5.html">くわしく見る</a></article>
   </div>
 </section>
@@ -101,6 +108,27 @@
   </ul>
 </section>
 
-<footer><span class="pix">STUDIO PATTI</span>合同会社スタジオパッチ　池本 将</footer>
+<footer class="company">
+  <div class="in">
+    <p class="pix">COMPANY</p>
+    <h2>運営会社</h2>
+    <dl>
+      <dt>商号</dt><dd>合同会社スタジオパッチ</dd>
+      <dt>代表</dt><dd>池本 将</dd>
+      <dt>法人番号</dt><dd>6180003026597</dd>
+      <dt>所在地</dt><dd>愛知県一宮市西五城中切29-1</dd>
+      <dt>創業</dt><dd>2024年4月1日</dd>
+      <dt>資本金</dt><dd>1,000,000円</dd>
+      <dt>問合せ先</dt><dd>mm.arrowz.39@gmail.com</dd>
+    </dl>
+    <p class="copy">© 2026 STUDIO PATTI. All rights reserved.</p>
+  </div>
+</footer>
+<div class="modal" id="m-line" hidden><div class="sheet line"><div class="bar"><b>公式LINEで「相談」と送ってください</b><button type="button" class="close">とじる</button></div><div class="linebox"><img src="img/line_qr.png" alt="公式LINEのQRコード" width="220" height="220"><a class="get" href="https://lin.ee/QV4fVfO" target="_blank" rel="noopener">LINEを開く</a><p class="url">https://lin.ee/QV4fVfO</p><p>スマホはボタンから、パソコンはQRコードをスマホで読み取ってください。トークで「相談」と送ると、申し込みの案内が届きます。</p></div></div></div>
+<script>
+document.querySelectorAll('[data-open]').forEach(function(b){b.addEventListener('click',function(){var m=document.getElementById(b.getAttribute('data-open'));if(m){m.hidden=false;document.body.style.overflow='hidden'}})});
+document.querySelectorAll('.modal').forEach(function(m){var close=function(){m.hidden=true;document.body.style.overflow=''};m.addEventListener('click',function(e){if(e.target===m)close()});var c=m.querySelector('.close');if(c)c.addEventListener('click',close)});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')document.querySelectorAll('.modal').forEach(function(m){m.hidden=true;document.body.style.overflow=''})});
+</script>
 </body>
 </html>

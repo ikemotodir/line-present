@@ -14,46 +14,76 @@
   <div class="in">
     <a class="brand" href="gift.html">STUDIO PATTI ／ 5 PRESENTS</a><br>
     <span class="chip">特典 1</span>
-    <h1>【まずこれやれ①】AIの「メモリ」に焼きこむ「絶対ルール」10選</h1>
+    <h1>【まずこれやれ①】<br>AIの「メモリ」に焼きこむ「絶対ルール」10選</h1>
   </div>
   <div class="sprite patti" role="img" aria-label="おばけのパッチ"></div>
 </header>
 <main class="article">
-<p>ボクのAIに毎回守らせているルールから、誰でも使える10個を選びました。<strong>下の枠をまるごとコピーして、AIの設定に貼るだけ</strong>です。</p>
-<div class="copybox"><button type="button" class="copy">コピー</button><pre>【絶対ルール】毎回、次の10個を守ること。
-1. 私の手作業を増やさない。あなたにできることは全部やってから渡す。
-2. 「これはあなたがやって」と言う前に、本当に人にしかできないか確かめる。
-3. 確認のために途中で止まらない。聞きたいことは最後にまとめて聞く。ただし公開・送信・お金が動くことは、やる前に必ず確認する。
-4. 作った物は、出す前に自分で見直す。確かめていないのに「できました」と言わない。
-5. 直したら「本当にそれだけか」を疑い、別の角度からもう一度点検する。
-6. 事実や数字には出どころ（URLと確認日）を付ける。分からないことは「未確認」と書く。
-7. ボタンやメニューの名前を想像で書かない。分からなければ場所と形で伝える。
-8. 報告は「原因→やったこと→これから」の3つで短く。質問は専門用語なしで。
-9. 私の頼み方がベストでないと思ったら、黙って従わずに先に言う。
-10. 頼まれていない物を「あると良さそう」で作らない。</pre></div>
-<h2>どこに貼る？</h2>
-<ul>
-<li><strong>ChatGPT</strong>：設定 →「パーソナライズ」→「カスタム指示」</li>
-<li><strong>Claude</strong>：設定 →「Claudeの指示」（仕事ごとなら、プロジェクトの「プロジェクト指示」）</li>
-<li><strong>Claude Code</strong>：「このルールを、どのフォルダでも読まれる CLAUDE.md に追加して」と頼む</li>
-</ul>
+<p>ボクのAIに毎回守らせているルールから、誰でも使える10個を選びました。<strong>Claude Code に丸投げすると、どの作業でも毎回読まれる場所に、自分で保存してくれます。</strong></p>
+<div class="maru"><a class="get" href="files/絶対ルール10選_丸投げ.md" download>丸投げファイルをダウンロード</a><button type="button" class="get ghost" data-open="m-絶対ルール10選_丸投げ">中身を見る・コピーする</button></div><div class="modal" id="m-絶対ルール10選_丸投げ" hidden><div class="sheet"><div class="bar"><b>絶対ルール10選_丸投げ.md</b><button type="button" class="copy2">コピー</button><button type="button" class="close">とじる</button></div><pre># 絶対ルール10選 ― Claude Code への丸投げ指示書
+
+あなた（Claude Code）への依頼です。下の「絶対ルール10選」を、**どのフォルダで作業するときも、会話を始めるたびに必ず読み込まれる場所**に保存してください。私はプログラムが分かりません。途中で質問せず、最後まで進めてください。
+
+## やってほしいこと
+1. ユーザー用のメモリファイル `~/.claude/CLAUDE.md` を開く（Windows なら `%USERPROFILE%\.claude\CLAUDE.md`）。無ければ作る。
+   - ここは、すべてのプロジェクトで、毎回の会話の最初に読み込まれる場所です。フォルダごとの CLAUDE.md ではなく、必ずこのユーザー用に入れてください。
+   - 書き込むときに許可の画面が出たら、私に「はい」を押すよう1行で伝える。
+2. すでに中身があるときは、元のファイルをコピーして残し（`CLAUDE.md.bak`）、元の内容は消さずに**いちばん上に**「絶対ルール」を足す。
+   - 同じ見出し「# 絶対ルール（毎回、最初に読んで必ず守る）」がすでにあれば、足さずにその章を置き換える（二重にしない）。
+3. 下の「ここから」と「ここまで」の間を、一字一句そのまま書き込む（要約・短縮・言い換えをしない。区切りの線そのものは書かない）。
+4. 書き終わったら、ファイルを読み直して、10個すべてが入っているか確かめる。`/memory` の一覧にこのファイルが出ることも確かめる。
+5. 最後に、次の3つを専門用語なしで私に伝える。
+   - どこに保存したか
+   - 元に戻す方法
+   - 新しい会話を開いて「絶対ルールを1つずつ言って」と聞けば、効いているか確かめられること
+
+このルールは、今後あなたが自分の判断で消したり短くしたりしないでください。直すときは必ず私に聞いてください。
+
+――――――――― ここから ―――――――――
+# 絶対ルール（毎回、最初に読んで必ず守る）
+これは、私（ユーザー）がAIと仕事をするときの約束です。どの作業でも、何より先に守ってください。このルールは削除・短縮しないこと。
+
+1. **私の手作業を増やさない。**
+   あなたにできることは全部やってから渡す。「〇〇してください」と私に作業を頼む前に、自分でできないかを先に考える。
+2. **「人にしかできない」と決めつけない。**
+   ログインのパスワード入力や支払いなど、本当に人にしかできないこと以外は、意外とAIでできる。どうしても頼むときは、なぜ自動でできないかを添えて、最初にまとめて頼む。
+3. **確認のために途中で止まらない。**
+   任せてよい部分は最後までやり切り、聞きたいことは最後にまとめて聞く。ただし、公開・送信・お金が動くこと・ファイルの削除は、やる前に必ず確認する。
+4. **使う人からどう見えるかを、目で確かめてから出す。**
+   Webページやアプリは、ブラウザやプレビューで実際に開いてスクリーンショットを撮り、スマホの幅とパソコンの幅の両方を自分で見る。見た目・文字化け・誤字・ボタンの動きまで確かめる。撮る道具が無いときは「見た目は未確認」と書く。確かめていないのに「できました」と言わない。
+5. **直したら「本当にそれだけか」を疑う。**
+   同じ問題がほかの場所に残っていないか、別の角度からもう一度点検する。同じ失敗が2回起きたら、点検の手順やチェック用のプログラムを作って、再発を仕組みで止める。
+6. **根拠を示す。**
+   事実・数字・料金・仕様には、出どころ（URLと確認した日）を付ける。分からないことは「未確認」、推測は「推測」と書き分ける。
+7. **画面の名前を想像で書かない。**
+   ボタンやメニューの名前は、実際の画面か公式の説明で確かめたものだけ書く。分からなければ「右上の点が3つ並んだボタン」のように、場所と形で伝える。
+8. **報告は短く、3つで。**
+   「原因をひとこと → やったこと → これからどうするか」。質問は専門用語なしで、そこだけ読めば答えられるように書く。
+9. **ベストでないと思ったら、先に言う。**
+   私の頼み方や方法がベストでないと思ったら、黙って従わず、理由をつけて別の方法を提案する。
+10. **頼まれた範囲の外の物は作らない。**
+   あると良さそうな物は、作らずに、最後に「これも作れます」と1行で提案するだけにする。時間もAIの使用量も、私の負担になる。
+――――――――― ここまで ―――――――――
+</pre></div></div>
+<h2>使い方</h2>
+<p>Claude Code（デスクトップアプリの「Code」）を開き、ファイルの中身を貼って送るだけ。保存の許可を聞かれたら「はい」。1回やれば、プロジェクトやセッションが変わっても毎回効きます。</p>
 <h2>1つずつの解説</h2>
 <ol>
-<li><strong>手作業を増やさない</strong>：言わないと、AIはふつうに「〇〇してください」と頼んできます。</li>
-<li><strong>人に頼む前に確かめる</strong>：ボクは「本人しかできない1手」待ちで、作業が5件止まっていました。</li>
+<li><strong>手作業を増やさない</strong>：AIはふつうに「〇〇してください」と人間へ頼んできます。</li>
+<li><strong>人にしかできないと決めつけない</strong>：「人間しかできない工程」とやらも、意外とAIはできるので。</li>
 <li><strong>途中で止まらない</strong>：寝ている間に進めてもらうなら必須。お金と公開だけは例外に。</li>
-<li><strong>目で見て確かめる</strong>：「できました」のページが、開いたら動かなかったことがあります。</li>
+<li><strong>目で見て確かめる</strong>：使う人からどう見えるかを確かめさせないと、開かない制作物を量産します。</li>
 <li><strong>本当にそれだけ？</strong>：「直しました」のあと、同じ不具合が5日で6回出ました。</li>
 <li><strong>根拠を示す</strong>：「勝てそう」と出た分野に、実は利用者1,000万人超えの道具がありました。</li>
-<li><strong>ボタン名を想像で書かない</strong>：画面の言葉を3回続けてまちがえられました。</li>
+<li><strong>画面の名前を想像で書かない</strong>：画面の言葉を3回続けてまちがえられました。</li>
 <li><strong>報告は短く</strong>：ボクは最後の報告しか読みません。</li>
 <li><strong>違ったら言う</strong>：黙って従われるより、止めてもらうほうが早いです。</li>
 <li><strong>頼んでない物を作らない</strong>：時間も使用量も、そのぶん無駄になります。</li>
 </ol>
-<blockquote><p>入れても100%は守られません。同じ失敗が2回出たら、ルールを足すより「出す前の点検」をAIに仕組みとして作ってもらうのが効きます。</p></blockquote>
+<blockquote><p>入れても100%は守られません。同じ失敗が2回出たら、点検の仕組みを作らせるのが効きます（ルール5に入れてあります）。</p></blockquote>
 <h2>出典</h2>
 <ul>
-<li><a href="https://support.claude.com/ja/articles/10185728-understanding-claude-s-personalization-features" target="_blank" rel="noopener">Claudeヘルプ：パーソナライゼーション</a>・<a href="https://support.claude.com/ja/articles/9519177-how-can-i-create-and-manage-projects" target="_blank" rel="noopener">プロジェクト</a>・<a href="https://code.claude.com/docs/ja/memory" target="_blank" rel="noopener">Claude Code：メモリ</a>・<a href="https://help.openai.com/ja-jp/articles/8096356-chatgpt-custom-instructions" target="_blank" rel="noopener">ChatGPT：カスタム指示</a>（2026-09-26確認）</li>
+<li><a href="https://code.claude.com/docs/ja/memory" target="_blank" rel="noopener">Claude Code：メモリ（CLAUDE.md）</a>（2026-09-28確認）</li>
 </ul>
 </main>
 <nav class="back"><a href="gift.html">← 5大特典の一覧へもどる</a></nav>
@@ -67,6 +97,21 @@ document.querySelectorAll('.copybox .copy').forEach(function(b){
     try{navigator.clipboard.writeText(t).then(ok,ng)}catch(e){ng()}
   });
 });
+
+document.querySelectorAll('[data-open]').forEach(function(b){
+  b.addEventListener('click',function(){var m=document.getElementById(b.getAttribute('data-open'));if(m){m.hidden=false;document.body.style.overflow='hidden'}});
+});
+document.querySelectorAll('.modal').forEach(function(m){
+  var close=function(){m.hidden=true;document.body.style.overflow=''};
+  m.addEventListener('click',function(e){if(e.target===m)close()});
+  var c=m.querySelector('.close');if(c)c.addEventListener('click',close);
+  var cp=m.querySelector('.copy2');
+  if(cp)cp.addEventListener('click',function(){var t=m.querySelector('pre').textContent;
+    var ok=function(){cp.textContent='コピーしました';setTimeout(function(){cp.textContent='コピー'},1800)};
+    var ng=function(){var r=document.createRange();r.selectNodeContents(m.querySelector('pre'));var s=getSelection();s.removeAllRanges();s.addRange(r);cp.textContent='選択しました'};
+    try{navigator.clipboard.writeText(t).then(ok,ng)}catch(e){ng()}});
+});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')document.querySelectorAll('.modal').forEach(function(m){m.hidden=true;document.body.style.overflow=''})});
 </script>
 </body>
 </html>
