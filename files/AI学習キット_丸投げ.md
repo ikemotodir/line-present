@@ -11,9 +11,10 @@
 ## 1. 道具を用意する（最初の1回だけ）
 - Windows か Mac かを調べる。Python は **uv** で用意する。uv が無ければ公式の方法で入れる（Windows は PowerShell で `irm https://astral.sh/uv/install.ps1 | iex`、Mac は `curl -LsSf https://astral.sh/uv/install.sh | sh`）。作業フォルダの中に専用の環境を作る（`uv venv --python 3.12`）。部品はそこに入れ、パソコン全体を汚さない。
   - 通信で `UnknownIssuer` や `CERTIFICATE_VERIFY_FAILED` が出たら、セキュリティソフトが通信を検査している。uv は環境変数 `UV_SYSTEM_CERTS=1` を付けて再実行し、Python からの通信は部品 `truststore` を入れて最初に `truststore.inject_into_ssl()` を呼ぶ。
-  - 作った道具は作業フォルダの `tools/` に置き、スキルの名前は `gakushu-kit` にする（毎回作り直さないため）。
+  - 作った道具は作業フォルダの `tools/` に置く。この手順と道具の場所（フルパス）を、どのフォルダから頼んでも使えるスキル `~/.claude/skills/gakushu-kit/SKILL.md` に書いておく（毎回作り直さないため。手順5 の講座ごとのスキルとは別）。
 - 入れる部品と役目：
-  - **faster-whisper**（動画・音声を文字にする。Whisper を速くした無料の部品。動画の読み込みは一緒に入る PyAV を使うので、ffmpeg はパソコンに入れなくてよい。**ただし PyAV は `av<17` を指定して入れる**。2026年10月時点、新しい PyAV 19 だと faster-whisper が `metadata_errors` のエラーで止まる）。モデルは `large-v3-turbo`（約1.6GB。初回だけダウンロードに数分）。GPU が無いと、文字起こしには動画の長さとほぼ同じ時間がかかる
+  - **faster-whisper**（動画・音声を文字にする。Whisper を速くした無料の部品。動画の読み込みは一緒に入る PyAV を使うので、ffmpeg はパソコンに入れなくてよい。**ただし PyAV は `av<17` を指定して入れる**。2026年10月時点、新しい PyAV 19 だと faster-whisper が `metadata_errors` のエラーで止まる）。モデルは `large-v3-turbo`（約1.6GB。初回だけダウンロードに数分）。GPU が無いと、文字起こしに動画の長さの半分ほどの時間がかかる（38秒の音声で CPU 15秒の実測。パソコンによってはもっとかかる）
+  - **yt-dlp**（YouTube・Vimeo など URL の動画を落とす。手順2で使う）
   - **PyMuPDF**（PDFの文字を取り出す）／**openpyxl**（Excel・スプレッドシート）／**requests・BeautifulSoup**（ウェブページ）／**Pillow**（画像を開く）
   - 画像の文字を読む：Windows は OS標準の文字認識を **winocr** で、Mac は OS標準の Vision を **ocrmac** で使う。日本語が読めない設定のときは、そう報告する。Windows の文字認識は日本語の字の間に空白が入るので詰める。濁点・半濁点が落ちることがあるので、数字や固有名詞は手順7で原文と照らす
 - NVIDIA の GPU があれば文字起こしに使う。ただし別のプロセスで数秒の試しが成功したときだけ。だめなら CPU（int8）でよい。
