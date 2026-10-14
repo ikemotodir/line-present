@@ -25,19 +25,19 @@
 あなた（Claude Code）への依頼です。私のパソコンの Claude Code を、**いちいち許可を聞かずに最後まで自動で進める**設定にしてください。そのかわり、事故が起きにくいように守りの設定も一緒に入れてください。私はプログラムが分かりません。途中で質問せず、最後まで進めてください。
 
 ## やってほしいこと
-1. ユーザー用の設定ファイル `~/.claude/settings.json` を開く（Windows なら `%USERPROFILE%\.claude\settings.json`）。無ければ作る。書き込むときに許可の画面が出たら、私に「はい」を押すよう1行で伝える。
-2. 変更前に、元のファイルを日付つきでコピーして残す（例: `settings.json.bak-20260928`）。
-3. すでにある設定は消さずに、次を足す（JSON の形を壊さない）。
-   - `permissions.defaultMode` を `"bypassPermissions"` にする（新しいフォルダでは、許可を聞かないモードで始まる。前に別のモードを選んだフォルダは、そのモードのまま）。
+1. ユーザー用の設定ファイル `~/.claude/settings.json` を開く（Windows なら `%USERPROFILE%\.claude\settings.json`）。無ければ作る（`.claude` フォルダ自体が無ければ、それも作る）。書き込むときに許可の画面が出たら、私に「はい」を押すよう1行で伝える（出なければ何もしなくてよい）。
+2. 変更前に、元のファイルがあれば日付つきでコピーして残す（名前は `settings.json.bak-` に実行した日の日付。例: `settings.json.bak-20261014`）。元から無ければコピーは要らない。
+3. すでにある設定は消さずに、次を足す（JSON の形を壊さない。すでに `ask` や `deny` の一覧があるときは、その一覧に足し、同じ物を二重に入れない）。
+   - `permissions.defaultMode` を `"bypassPermissions"` にする（新しいフォルダでは、許可を聞かないモードで始まる。前に別のモードを選んだフォルダは、そのモードのまま）。順番は、先に下の「画面でやること」1のスイッチを私がオンにする。オフのままだと、この設定を書いてもそのモードは選べない。
    - **毎回確認させる操作**（`permissions.ask`）：
      - `Bash(rm *)`（ファイルの削除）
      - `Bash(git push *)`（外への送信）
      - `Edit(~/.claude/settings.json)`（この設定そのものの書き換え）
      - Windows なら `PowerShell(Remove-Item *)`・`PowerShell(git push *)` も
    - **絶対にやらせない操作**（`permissions.deny`）：
-     - `Bash(git push *--force*)`・`Bash(git reset --hard *)`・`Bash(sudo *)`
-     - Windows なら `PowerShell(git push *--force*)`・`PowerShell(git reset --hard *)` も
-     - パスワードや鍵のファイル：`Read(**/.env)`・`Read(**/.env.*)`・`Read(~/.ssh/**)`
+     - `Bash(git push *--force*)`・`Bash(git push *-f*)`・`Bash(git reset --hard *)`・`Bash(sudo *)`
+     - Windows なら `PowerShell(git push *--force*)`・`PowerShell(git push *-f*)`・`PowerShell(git reset --hard *)` も
+     - パスワードや鍵のファイル：`Read(//**/.env)`・`Read(//**/.env.*)`・`Read(~/.ssh/**)`（先頭の `//` で、どのフォルダにある .env も対象になる。`//` が無いと作業フォルダの下だけ。公式ページの表のとおり）
    - 書き方は、必ず公式ドキュメント https://code.claude.com/docs/ja/permissions で確かめてから書く。確かめられなかった項目は入れずに「未確認」として報告する。
 4. サンドボックス（コマンドが触れる範囲をOSで制限する機能）は、公式ドキュメント https://code.claude.com/docs/ja/sandboxing によると macOS・Linux・WSL2 だけで使える。
    - Mac なら有効にする。
