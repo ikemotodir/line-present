@@ -166,7 +166,7 @@ body.game footer{border:0;color:#fff;opacity:.9}
 body.game footer .pix{font-family:"Silkscreen",monospace}
 @media (prefers-reduced-motion: reduce){.spr{animation:none}}
 /* ===== 2026-10-27 修正（池本さんの指示）: 見出し1行目に「レベルUPする」＋ドット絵の矢印とキラキラ／金色の「豪華7大特典」／ゲームの文言の窓／見出しの札を1行目に ===== */
-.who{display:inline-flex;align-items:center;line-height:1;padding:5px 10px 4px}
+.who{display:inline-flex;align-items:center;line-height:1;padding:4px 10px 5px}  /* 上5・下5pxで縦の中央（375px・320pxで画素を測った） */
 .hero h1 .l1{display:flex;flex-wrap:nowrap;align-items:center;gap:.25em;font-size:clamp(17px,5.5vw,34px);white-space:nowrap}
 .hero h1 .hl{display:inline-flex;align-items:center;gap:.12em;padding:.22em .4em;line-height:1.15;position:relative}
 .px{display:inline-block;flex:none;fill:currentColor;overflow:visible}
@@ -178,7 +178,7 @@ body.game footer .pix{font-family:"Silkscreen",monospace}
 .hero h1 .gold .gt{background:linear-gradient(180deg,#fff8d1 0%,#ffe066 40%,#f5b400 58%,#ffd84a 80%,#fff1a8 100%);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(3px 3px 0 #0d1a4a);letter-spacing:.04em}
 .hero h1 .gold b{font-weight:400;font-size:1.3em;line-height:1}
 .px.gs{width:.55em;height:.55em;color:#ffe066;animation:pxtw 1.4s steps(1) infinite}
-.px.gs.g2{animation-delay:.7s;transform:scaleX(-1)}
+.px.gs.g2{animation-delay:.7s;scale:-1 1}  /* transform だと点滅の scale に上書きされて反転が外れる */
 /* ゲームの文言の窓（RPGのメッセージ風） */
 .msg{position:relative;background:var(--night);color:#fff;border:3px solid #fff;outline:3px solid var(--night);border-radius:6px;padding:12px 36px 14px 16px;margin:3px;font-family:var(--f-dot)}
 .msg p{margin:0;font-size:19px;line-height:1.6}
