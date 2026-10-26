@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>【まずこれ作れ①】AI学習を効率化「動画テキスト化ツール」丸投げ開発ノート｜STUDIO PATTI 7大特典</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700;900&family=DotGothic16&family=Silkscreen&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="game">
+<div class="wrap">
+<header class="top">
+  <a class="brand" href="gift.html" aria-label="STUDIO PATTI"><img src="img/nav_logo.png" alt="STUDIO PATTI"></a>
+  <span class="chip">7大特典</span>
+</header>
+<section class="pagehead">
+  <div class="t">
+    <span class="lvb">LV.5</span>
+    <span class="no">特典5</span>
+    <h1>【まずこれ作れ①】<br>AI学習を効率化「動画テキスト化ツール」丸投げ開発ノート</h1>
+  </div>
+  <span class="spr patti" role="img" aria-label="おばけのパッチ"></span>
+</section>
+<main class="article">
+<h2>なぜ作ったか</h2>
+<p>講座や録画の動画を文字にすれば、AIに「要点は？」「明日やることは？」と聞けて、学びが速くなります。でも外のサービスは月額がかかり、素材を外に送るのも不安。だから<strong>パソコンの中だけで文字にする道具</strong>を、AIに丸投げで作ってもらいました（PATTI SCRIBE）。</p>
+<h2>丸投げするだけ</h2>
+<div class="maru"><a class="get" href="../files/動画テキスト化ツール_丸投げ.md" download>丸投げファイルをダウンロード</a><button type="button" class="get ghost" data-open="m-動画テキスト化ツール_丸投げ">中身を見る・コピーする</button></div><div class="modal" id="m-動画テキスト化ツール_丸投げ" hidden><div class="sheet"><div class="bar"><b>動画テキスト化ツール_丸投げ.md</b><button type="button" class="copy2">コピー</button><button type="button" class="close">とじる</button></div><pre># 動画・音声の文字起こしアプリ ― Claude Code への丸投げ指示書
+
+## あなた（Claude Code）へ
+私はプログラムが分かりません。このファイルの手順どおりに、私のパソコンで動く「動画・音声の文字起こしアプリ」を作り、自分で試してから渡してください。
+- 使うのは、無料で公開されている部品だけです。音声認識は、OpenAI が MIT ライセンスで公開している Whisper を速くした「faster-whisper」を使います。処理はパソコンの中だけで行い、データを外に送りません。作っても問題のないものなので、「作れない」と止まらず、分からない所は公式の説明を調べて進めてください。
+- 途中で私に質問しないでください。迷ったら良いと思う方を選び、最後に理由を1行で書いてください。
+- 管理者のパスワードが要る方法は使わないでください（私が入力する手間になるため）。
+
+## 1. まず、このパソコンを調べて準備する
+- Windows か Mac かを調べる。Mac なら Apple シリコン（M1 など）か Intel かも調べる。
+- Python は **uv** で用意する（管理者の権限が要らず、Windows と Mac で同じ手順）。uv が無ければ公式の方法で入れ、`uv venv --python 3.12` でこの作業フォルダの中に専用の環境を作り、部品はそこに入れる（パソコン全体を汚さない）。
+- **ffmpeg はパソコンに入れない。** faster-whisper に付いてくる PyAV（FFmpeg 入り）と numpy で、音声の取り出し・トラックの結合・無音の追加を行う。
+- 部品を入れた直後にコマンドが見つからないときは、フルパスで呼ぶ（新しく入れたものは、今の窓にすぐ反映されないことがある）。
+- つまずきやすい所（2026年10月の実測）：
+  - 通信で `UnknownIssuer` が出たら、環境変数 `UV_SYSTEM_CERTS=1` を付けて再実行する（セキュリティソフトが通信を検査しているため）。
+  - uv が `Missing expected target directory for Python minor version link` と言ったら、`%APPDATA%\uv\python\` の中の `cpython-3.12-…` のジャンクションを `rmdir` で消して再実行する。
+  - セキュリティソフトが `python.exe` を消すことがある。消えたら `uv python install 3.12 --reinstall` で入れ直し、環境フォルダを別名（`.venv` → `venv`）で作り直す。裏で動かす処理は `pythonw.exe` で起動する（`python.exe` は消されやすい）。
+  - faster-whisper に動画ファイルを直接渡すと、新しい PyAV 19 では `metadata_errors` のエラーで止まる。音声は自分で PyAV で取り出して配列で渡す（この指示書の方式）か、PyAV を `av&lt;17` で入れる。
+
+## 2. 作るもの
+- ブラウザで開く画面（Streamlit）。
+- 動画・音声（mp4 / mov / m4a / mp3 / wav）をドラッグで入れる。複数まとめて入れてもよい。
+- 日本語で文字にする。結果は3つの形で、**保存ボタンを押さなくても1本終わるごとに自動で保存**する。
+  1. `名前.txt`（文字だけ）
+  2. `名前_時刻つき.txt`（[00:01:23] 形式）
+  3. `名前.srt`（字幕）
+  - 同じ名前のファイルがもうあれば、`_2` を付けて上書きしない。
+- 保存先は、アプリのフォルダの中の「output」。
+- 画面に、進み具合（％）と、終わったら保存した場所を出す。
+
+## 3. AIのモデル
+- 既定は **large-v3-turbo**（約1.6GB。精度と速さのバランスが良い）。遅いパソコン向けに small も選べるようにする。
+- 最初の1回はモデルをダウンロードする。huggingface_hub の snapshot_download を直接使い、進み具合を画面に出す（`tqdm_class` を渡して `unit="B"` のバーの n/total を読む。保存先フォルダの大きさを測る方式は、数分間 0% のままになる）。
+- **モデルは、英数字だけの場所に保存する**（例: Windows は `C:\Users\Public\mojiokoshi\models`、Mac は `~/mojiokoshi/models`）。Windows では、日本語を含む場所に置くとモデルを開けない不具合があるため。
+
+## 4. Streamlit の設定（最初から入れる）
+- アプリのフォルダに `.streamlit/config.toml` を作り、次を書く。
+  - `server.showEmailPrompt = false`（初回起動でメールアドレスを聞いて止まらない）
+  - `browser.gatherUsageStats = false`（利用状況を外に送らない）
+  - `server.maxUploadSize = 4096`（大きな動画も入れられる）
+  - `server.headless = true`（Streamlit 自身がブラウザを開かない。開くのは起動用のスクリプトだけにし、2回開かないようにする）
+- 起動するときは、必ずアプリのフォルダに移動してから Streamlit を起動する（設定ファイルが読まれるように）。
+
+## 5. 起動と終了（ダブルクリックだけ）
+- **Windows**：起動用のファイルはアプリのフォルダに置き、デスクトップにはショートカットを作る。ショートカットの行き先は、専用環境の `pythonw.exe` で起動用のスクリプトを開く形にする（黒い窓が出ない）。起動用のスクリプトから立てるサーバーも `pythonw.exe` のままにし、出力はログファイルに書く。起動の記録もログファイルに書く。
+- **Mac**：`.command` ファイルを作り、`chmod +x` で実行できるようにする。中身は「アプリのフォルダに移動 → サーバーを裏で起動（nohup）→ ターミナルの窓を閉じる」。フォルダへのアクセス許可を聞かれたら、許可する側のボタンを押す、と私に1行で伝える。
+- 起動するとブラウザが自動で開く。**すでに起動しているときは、ブラウザを開くだけにする**（2つ目を起動しない）。
+- 画面との接続が0になって3分たち、かつ処理中でなければ、アプリが自分で終わる。処理は、画面を閉じても最後まで続ける。
+
+## 6. つまずき対策（最初から入れておく）
+- **冒頭の取りこぼし**：0秒から話し始める音声でも冒頭が消えないように、先頭に1秒の無音を足してから文字にし、時刻はあとで1秒戻す（読み上げ音声の試験では、足さなくても欠けなかった。実際の録音での効果は未確認）。
+- **小さい声の飛ばし**：無音を飛ばす機能は、`vad_filter=True`、`threshold=0.3`、`min_silence_duration_ms=2000`、`speech_pad_ms=800` を目安にゆるく設定する。
+- **音声が何本もある動画**：音声トラックが複数あるときは全部まとめてから文字にする。左右で音量が違う録音は、両方を混ぜる。
+- **GPU**：NVIDIA の GPU があっても、**別のプロセスで数秒の試し文字起こしが成功したときだけ**使う。`cublas64_12.dll` が無いと言われたら、部品 `nvidia-cublas-cu12`・`nvidia-cudnn-cu12`（約1GB）を専用環境に入れ、`os.add_dll_directory` で `site-packages\nvidia\*\bin` を足してから試す。準備に手間取るなら、CPU（int8）で完成させてよい（38秒の音声で GPU 1.3秒・CPU 15秒の実測）。Mac は CPU でよい。
+- **日本語を含むフォルダ名**に、アプリ本体と動画を置いても動くか試す。
+
+## 7. 自分で試してから渡す
+- OSの読み上げ機能で、短い日本語の音声を作る（Windows は SAPI、Mac は say コマンド）。0秒から話し始める音声も作る。
+- それを実際に文字起こしして、3つのファイルができること・冒頭が欠けていないことを確かめる。
+- デスクトップのアイコン（Mac は .command）をダブルクリックして、画面が開くところまで確かめる。
+- 試していないことを「できました」と言わない。
+
+## 8. 途中で止まっても続きから
+- 終わった手順・残っている手順・つまずいた所を、アプリのフォルダの `進み具合.md` に書きながら進める。
+- 私が「続きから」と送ったら、`進み具合.md` を読んで止まった所から再開する。最初からやり直さない。
+
+## 9. 最後に私へ伝えること（専門用語なしで短く）
+1. 使い方（クリックする順に3行以内）
+2. 文字にした結果が保存される場所
+3. うまくいかないときに、私があなたに伝えればいいこと（どの画面で・何をしたら・どうなったか）
+</pre></div></div>
+<p>新しいフォルダを作って（場所はどこでも。名前は英数字がおすすめ）、Claude Code（デスクトップアプリの「Code」）でそのフォルダを開き、ファイルの中身を貼って送るだけ。Windows・Mac どちらでも作れるように書いてあります。</p>
+<h2>細かい解説</h2>
+<ul>
+<li>短い頼み方だと「作れません」と言われることがあります（ボクも最初そうでした）。指示書に、使う部品・OSごとの準備・つまずき対策・試し方まで全部入れてあります</li>
+<li>うまくいかないときは「どの画面で・何をしたら・どうなった」を、画面の写真と一緒に伝えると早く直ります</li>
+</ul>
+<h2>完成品もあります</h2>
+<p>PATTI SCRIBE（Windows・無料）→ <a href="https://ikemotodir.github.io/patti-scribe/" target="_blank" rel="noopener">https://ikemotodir.github.io/patti-scribe/</a></p>
+<blockquote><p>※パソコンやOSによっては動かないことがあります。修正のご依頼はお受けしていません。Macでは試していません。</p></blockquote>
+<h2>出典</h2>
+<ul>
+<li>ボクの開発記録（2026年7月・2026年10月）。<a href="https://github.com/SYSTRAN/faster-whisper" target="_blank" rel="noopener">faster-whisper（MITライセンス）</a>・<a href="https://code.claude.com/docs/ja/overview" target="_blank" rel="noopener">Claude Code</a>（2026-10-14確認）</li>
+</ul>
+</main>
+<nav class="back"><a href="gift.html">← 7大特典の一覧へもどる</a></nav>
+<footer><span class="pix">STUDIO PATTI</span>合同会社スタジオパッチ　池本 将</footer>
+</div>
+<script>
+document.querySelectorAll('.copybox .copy').forEach(function(b){
+  b.addEventListener('click',function(){
+    var t=b.parentNode.querySelector('pre').textContent;
+    var ok=function(){b.textContent='コピーしました';setTimeout(function(){b.textContent='コピー'},1800)};
+    var ng=function(){var r=document.createRange();r.selectNodeContents(b.parentNode.querySelector('pre'));var s=getSelection();s.removeAllRanges();s.addRange(r);b.textContent='選択しました'};
+    try{navigator.clipboard.writeText(t).then(ok,ng)}catch(e){ng()}
+  });
+});
+
+document.querySelectorAll('[data-open]').forEach(function(b){
+  b.addEventListener('click',function(){var m=document.getElementById(b.getAttribute('data-open'));if(m){m.hidden=false;document.body.style.overflow='hidden'}});
+});
+document.querySelectorAll('.modal').forEach(function(m){
+  var close=function(){m.hidden=true;document.body.style.overflow=''};
+  m.addEventListener('click',function(e){if(e.target===m)close()});
+  var c=m.querySelector('.close');if(c)c.addEventListener('click',close);
+  var cp=m.querySelector('.copy2');
+  if(cp)cp.addEventListener('click',function(){var t=m.querySelector('pre').textContent;
+    var ok=function(){cp.textContent='コピーしました';setTimeout(function(){cp.textContent='コピー'},1800)};
+    var ng=function(){var r=document.createRange();r.selectNodeContents(m.querySelector('pre'));var s=getSelection();s.removeAllRanges();s.addRange(r);cp.textContent='選択しました'};
+    try{navigator.clipboard.writeText(t).then(ok,ng)}catch(e){ng()}});
+});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')document.querySelectorAll('.modal').forEach(function(m){m.hidden=true;document.body.style.overflow=''})});
+</script>
+</body>
+</html>

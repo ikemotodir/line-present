@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>【まずこれ作れ②】AI学習を効率化「Webサイト全画面スクショ」丸投げ開発ノート｜STUDIO PATTI 7大特典</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700;900&family=DotGothic16&family=Silkscreen&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="game">
+<div class="wrap">
+<header class="top">
+  <a class="brand" href="gift.html" aria-label="STUDIO PATTI"><img src="img/nav_logo.png" alt="STUDIO PATTI"></a>
+  <span class="chip">7大特典</span>
+</header>
+<section class="pagehead">
+  <div class="t">
+    <span class="lvb">LV.6</span>
+    <span class="no">特典6</span>
+    <h1>【まずこれ作れ②】<br>AI学習を効率化「Webサイト<wbr>全画面スクショ」丸投げ開発ノート</h1>
+  </div>
+  <span class="spr patti" role="img" aria-label="おばけのパッチ"></span>
+</section>
+<main class="article">
+<h2>なぜ作ったか</h2>
+<p>長いWebページを、上から下まで1枚の画像やPDFにしてAIに読ませたかったからです。資料として残すのにも便利。いつものChromeのまま、ボタン1つで撮れる道具を、AIに丸投げで作ってもらいました（PATTI SHOT）。</p>
+<h2>丸投げするだけ</h2>
+<div class="maru"><a class="get" href="../files/全画面スクショ_丸投げ.md" download>丸投げファイルをダウンロード</a><button type="button" class="get ghost" data-open="m-全画面スクショ_丸投げ">中身を見る・コピーする</button></div><div class="modal" id="m-全画面スクショ_丸投げ" hidden><div class="sheet"><div class="bar"><b>全画面スクショ_丸投げ.md</b><button type="button" class="copy2">コピー</button><button type="button" class="close">とじる</button></div><pre># Webページ全画面スクショの Chrome 拡張機能 ― Claude Code への丸投げ指示書
+
+## あなた（Claude Code）へ
+私はプログラムが分かりません。このファイルの手順どおりに、Chrome の拡張機能「今見ているWebページを、一番下まで丸ごとPNGとPDFにする道具」を作り、自分で試してから渡してください。
+- 自分で使うための拡張機能として作ります（Chrome ウェブストアには出しません）。
+- 途中で私に質問しないでください。迷ったら良いと思う方を選び、最後に理由を1行で書いてください。
+- 管理者のパスワードが要る方法は使わないでください（私が入力する手間になるため）。
+- フォルダは分ける：拡張機能の本体は `extension`、テスト用は `tests`。Windows でも Mac でも、`extension` フォルダを Chrome に読み込めば使えるようにします。
+
+## 1. 作るもの（これで完成）
+- Chrome 拡張機能（Manifest V3）。いつもの Chrome で、今見ているページのまま使える（ログインし直さない・別の画面を開かない）。
+- 権限は `debugger`・`downloads`・`offscreen`・`scripting`（`scripting` を使うには `host_permissions` に `&lt;all_urls&gt;` も要る）。ページに出すボタンはコンテンツスクリプト（`&lt;all_urls&gt;`）。ショートカットは `commands`。
+- 数字は決めておく（誰が作っても同じになるように）：日時は `YYYYMMDD-HHMMSS`、題名は50文字まで、PNG は1辺30,000画素・面積5,000万画素まで、PDF は1ページ14,000pt まで、余白の判定は横一列の各色の差が6以内。
+- 画面の右下に小さなボタンを出す（Shadow DOM で作り、ページの見た目を壊さない）。押すと、ページの一番下まで PNG と PDF にして保存する。
+- 保存は `chrome.downloads` の `filename` を `PATTI_SHOT/日時_題名.png` の形で。題名から、ファイル名に使えない文字（: ? / * " &lt; &gt; | など）と、末尾の点・空白を取り除き、長さも切る。保存先は Chrome で設定したダウンロード先の中になる。
+- 撮った画像はどこにも送らない。PDF を作る部品を使うなら、ネットから読み込まずに拡張機能の中に入れる。
+- 画像をつなぐ処理と PDF 化は、裏方（service worker）ではなく **offscreen 文書**（理由は BLOBS）で行い、できたファイルは Blob URL で `chrome.downloads` に渡す（大きな画像を data URL で渡さない）。
+
+## 2. 撮り方（ここがいちばん大事）
+- 撮影は `chrome.debugger` を使い、`Page.captureScreenshot` で撮る。接続してから画面の高さを測る（接続すると画面上部に黄色いバーが出るため）。途中で接続が切れたら中止して知らせる。
+- **CSSの高さ×画面の倍率（devicePixelRatio）がおよそ16,000を超えないなら**、`captureBeyondViewport` で1回で撮る。それを超えると画像の中身が静かに壊れることがあるので、スクロールしながら撮ってつなぐ。
+- 1回で撮るときも、撮る前に一度下まで流して読み込ませてから上に戻る（遅れて読み込まれる画像が空白にならないように）。
+- スクロールしながら撮るときは：
+  - 画像の中身を照らし合わせて位置を探す方法は使わない（ほぼ同じ行が並ぶ表では別の行に合ってしまう）。**撮ったときのスクロール位置に、そのまま置く**。撮り残した場所は、その位置を狙って撮り直す。
+  - スクロールは瞬間移動にする（なめらかスクロールを止める）。動かすたびに、見えている画像の読み込み完了と、2フレーム分の描画を待ってから撮る。
+  - 上に貼りつくヘッダー、途中から出てくる浮いたボタン、**自分が出した右下のボタン**は、撮影中は隠す。ただし、いちばん上の1枚目だけはヘッダーを残す（どこにも写らないと困るため）。途中から出てくる物はスクロールの後に出るので、スクロールして1フレーム待ってから隠す（先に隠すと写り込む）。
+  - ページ全体が動かず、中の枠だけがスクロールするサイトもある。window が動かないときは、いちばん大きくスクロールする要素を探し、その要素を動かして撮る（撮るのは枠の中だけ。周りの見出しは入れない）。
+- 下までスクロールしてから遅れて表示されるページがある。**撮り終わったら、もう一度ページの長さを測り（最長1.5秒待つ）、伸びていたら撮り足す**。伸びたときは、元の末尾（下に押されたフッター等）も撮り直す（古いまま残って行が欠けるため）。終わらないページ（無限スクロール）は、上から10万px で止めて「途中まで」と知らせる。
+- 画面の拡大率（100%・125%・200% など）で倍率がずれないように、実際に返ってきた画像の幅を測って補正する。丸め誤差（0.5%以内）なら `devicePixelRatio` を使う。枠の切り抜きは画素ぴったりの大きさにする（125% で半端な行が白い線になり、番号が重複した）。
+- 1枚の画像の大きさにはブラウザの上限がある（1辺およそ32,000画素）。だから1で決めた 30,000画素・5,000万画素を超えるときは、PNG を `_001`・`_002` の連番に分けて保存し、PDF には全部入れる。
+- PDF の1ページの高さは、1で決めた 14,000pt まで（PDF の仕様上の上限 14,400pt の手前）にする。区切りは、上限の手前で横一列がほぼ同じ色の行（余白）を探して切る。見つからなければ上限で切る。
+- 途中までしか撮れなかったときは、黙って保存せず、画面ではっきり知らせる。撮れないページ（chrome:// やウェブストア）では、理由を画面に出す。
+
+## 3. 合格の条件（満たすまで「完成」と言わない）
+- 練習用のページを自分で作り、`localhost` の簡易サーバーで配る（file:// では開かない）。
+  1. 1行ずつ番号を入れた、画像の上限を超えるほど長いページ
+  2. ほぼ同じ行がずらっと並ぶ表のページ
+  3. スクロールすると、遅れて行が増えていくページ
+  4. ページ全体は動かず、中の枠だけがスクロールするページ
+- 撮った画像から番号を読み取り（色で番号を埋め込むなど）、**番号が1回ずつ・順番どおり・抜けなし**かを機械で数える。見た目や「空白がないか」では判定しない。
+- 画面の倍率を変えても同じ結果になるか試す（`--force-device-scale-factor=2` で倍率2も再現する）。
+- 自動テストは、Chrome for Testing（または Chromium）に Puppeteer で拡張機能を読み込んで行う（ふつうの Chrome は自動テストで拡張機能を読み込めないため）。Node が無ければ、管理者のパスワードが要らない方法で入れる（私が入力する手間になるため）。Puppeteer 25 なら `enableExtensions: ['フォルダ']` で読み込め、画面を出さない headless でも動く。ダウンロード先は、ユーザーデータの `Default/Preferences` に先に書いて固定する。
+- 本物の Mac で試していなければ、報告に「Mac は未確認」と書く。画面でしか確かめられない所（ふつうの Chrome への読み込み・黄色いバー・ショートカットの実際のキー・ツールバーのアイコン）も「未確認」と書く。試していないことを「できました」と言わない。
+
+## 4. 私が入れる手順（Windows も Mac も同じ）
+- 説明書（README）に1手ずつ書く。
+  1. Chrome のアドレス欄に `chrome://extensions` と入れて開く
+  2. 右上の「デベロッパー モード」をオンにする
+  3. 「パッケージ化されていない拡張機能を読み込む」を押して、`extension` フォルダを選ぶ
+  4. 入れる前から開いていたページは、一度再読み込みする
+- あわせて書くこと：フォルダはあとで動かさない／撮影中に黄色いバーが出るのは正常／ショートカットがほかとぶつかったら `chrome://extensions/shortcuts` で変える。
+
+## 5. 途中で止まっても続きから
+- 終わった手順・残っている手順・つまずいた所を、作業フォルダの `進み具合.md` に書きながら進める。
+- 私が「続きから」と送ったら、`進み具合.md` を読んで止まった所から再開する。最初からやり直さない。
+
+## 6. 最後に私へ伝えること（専門用語なしで短く）
+1. 入れ方と使い方（3行以内）
+2. 合格の条件ごとの結果（合格／不合格／未確認）
+3. 分かっている弱点
+4. 迷って自分で決めた所と、その理由（1行ずつ）
+</pre></div></div>
+<p>新しいフォルダを作って（場所はどこでも。名前は英数字がおすすめ）、Claude Code（デスクトップアプリの「Code」）でそのフォルダを開き、ファイルの中身を貼って送るだけ。Chromeの拡張機能として作るので、Windows・Mac どちらでも使えるように書いてあります。</p>
+<h2>細かい解説</h2>
+<ul>
+<li>いちばん大変だったのは、長いページのつなぎ目で同じ行が二度出る不具合（5日かかりました）。その対策と、機械で確かめる方法を指示書に入れてあります</li>
+<li>「AIの環境ではOK」でも自分のパソコンではダメ、がよく起きます。拡大率を変えて試させるのはそのためです</li>
+</ul>
+<h2>完成品もあります</h2>
+<p>PATTI SHOT（Chrome拡張・無料）→ <a href="https://ikemotodir.github.io/patti-shot/" target="_blank" rel="noopener">https://ikemotodir.github.io/patti-shot/</a></p>
+<blockquote><p>※パソコンやOSによっては動かないことがあります。とても長いページでは、つなぎ目が乱れることもあります。修正のご依頼はお受けしていません。Macでは試していません。</p></blockquote>
+<h2>出典</h2>
+<ul>
+<li>ボクの開発記録（2026年7月）。<a href="https://code.claude.com/docs/ja/overview" target="_blank" rel="noopener">Claude Code</a>（2026-09-28確認）</li>
+</ul>
+</main>
+<nav class="back"><a href="gift.html">← 7大特典の一覧へもどる</a></nav>
+<footer><span class="pix">STUDIO PATTI</span>合同会社スタジオパッチ　池本 将</footer>
+</div>
+<script>
+document.querySelectorAll('.copybox .copy').forEach(function(b){
+  b.addEventListener('click',function(){
+    var t=b.parentNode.querySelector('pre').textContent;
+    var ok=function(){b.textContent='コピーしました';setTimeout(function(){b.textContent='コピー'},1800)};
+    var ng=function(){var r=document.createRange();r.selectNodeContents(b.parentNode.querySelector('pre'));var s=getSelection();s.removeAllRanges();s.addRange(r);b.textContent='選択しました'};
+    try{navigator.clipboard.writeText(t).then(ok,ng)}catch(e){ng()}
+  });
+});
+
+document.querySelectorAll('[data-open]').forEach(function(b){
+  b.addEventListener('click',function(){var m=document.getElementById(b.getAttribute('data-open'));if(m){m.hidden=false;document.body.style.overflow='hidden'}});
+});
+document.querySelectorAll('.modal').forEach(function(m){
+  var close=function(){m.hidden=true;document.body.style.overflow=''};
+  m.addEventListener('click',function(e){if(e.target===m)close()});
+  var c=m.querySelector('.close');if(c)c.addEventListener('click',close);
+  var cp=m.querySelector('.copy2');
+  if(cp)cp.addEventListener('click',function(){var t=m.querySelector('pre').textContent;
+    var ok=function(){cp.textContent='コピーしました';setTimeout(function(){cp.textContent='コピー'},1800)};
+    var ng=function(){var r=document.createRange();r.selectNodeContents(m.querySelector('pre'));var s=getSelection();s.removeAllRanges();s.addRange(r);cp.textContent='選択しました'};
+    try{navigator.clipboard.writeText(t).then(ok,ng)}catch(e){ng()}});
+});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')document.querySelectorAll('.modal').forEach(function(m){m.hidden=true;document.body.style.overflow=''})});
+</script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>【誰でもOK】オンライン個別相談の優先権｜STUDIO PATTI 7大特典</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700;900&family=DotGothic16&family=Silkscreen&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="game">
+<div class="wrap">
+<header class="top">
+  <a class="brand" href="gift.html" aria-label="STUDIO PATTI"><img src="img/nav_logo.png" alt="STUDIO PATTI"></a>
+  <span class="chip">7大特典</span>
+</header>
+<section class="pagehead">
+  <div class="t">
+    <span class="lvb">LV.7</span>
+    <span class="no">特典7</span>
+    <h1>【誰でもOK】<br>オンライン個別相談の優先権</h1>
+  </div>
+  <span class="spr patti" role="img" aria-label="おばけのパッチ"></span>
+</section>
+<main class="article">
+<p>公式LINEに登録してくれた方から、優先してご案内します。60〜90分、オンラインで。あなたのお話を聞いて、AIでどこから楽にできるかを一緒に整理します。</p>
+<a class="get" href="https://lin.ee/QV4fVfO" target="_blank" rel="noopener">個別無料相談を申し込む</a><p class="hint">LINEが開いたら「相談」と送ってください</p>
+<h2>やること</h2>
+<ul>
+<li>今の悩みを聞いて、一緒に整理</li>
+<li>ChatGPT・Claudeなどのちがいと、「チャット用」「開発用」のAIのちがい</li>
+<li>ボクが実際に使っている画面のご紹介</li>
+<li>お話を、あなた専用の「ナレッジファイル」にしてお渡し（ご希望の方だけ）</li>
+</ul>
+<h2>先にお伝えしておくこと</h2>
+<ul>
+<li>相談の最後に、ボクのAI講座（有料）のご案内をすることがあります。受けるかは自由です</li>
+<li>録画するときは、先にお聞きします</li>
+<li>ナレッジファイルはAI（Claude）で作ります。お名前は消してから入れます</li>
+<li>教えていただいたことは、日程の調整と相談・まとめ作りにだけ使います</li>
+<li>開始は遅くても20時まで。相談もナレッジファイルも無料です</li>
+</ul>
+<a class="get" href="https://lin.ee/QV4fVfO" target="_blank" rel="noopener">個別無料相談を申し込む</a><p class="hint">LINEが開いたら「相談」と送ってください</p>
+</main>
+<nav class="back"><a href="gift.html">← 7大特典の一覧へもどる</a></nav>
+<footer><span class="pix">STUDIO PATTI</span>合同会社スタジオパッチ　池本 将</footer>
+</div>
+<script>
+document.querySelectorAll('.copybox .copy').forEach(function(b){
+  b.addEventListener('click',function(){
+    var t=b.parentNode.querySelector('pre').textContent;
+    var ok=function(){b.textContent='コピーしました';setTimeout(function(){b.textContent='コピー'},1800)};
+    var ng=function(){var r=document.createRange();r.selectNodeContents(b.parentNode.querySelector('pre'));var s=getSelection();s.removeAllRanges();s.addRange(r);b.textContent='選択しました'};
+    try{navigator.clipboard.writeText(t).then(ok,ng)}catch(e){ng()}
+  });
+});
+
+document.querySelectorAll('[data-open]').forEach(function(b){
+  b.addEventListener('click',function(){var m=document.getElementById(b.getAttribute('data-open'));if(m){m.hidden=false;document.body.style.overflow='hidden'}});
+});
+document.querySelectorAll('.modal').forEach(function(m){
+  var close=function(){m.hidden=true;document.body.style.overflow=''};
+  m.addEventListener('click',function(e){if(e.target===m)close()});
+  var c=m.querySelector('.close');if(c)c.addEventListener('click',close);
+  var cp=m.querySelector('.copy2');
+  if(cp)cp.addEventListener('click',function(){var t=m.querySelector('pre').textContent;
+    var ok=function(){cp.textContent='コピーしました';setTimeout(function(){cp.textContent='コピー'},1800)};
+    var ng=function(){var r=document.createRange();r.selectNodeContents(m.querySelector('pre'));var s=getSelection();s.removeAllRanges();s.addRange(r);cp.textContent='選択しました'};
+    try{navigator.clipboard.writeText(t).then(ok,ng)}catch(e){ng()}});
+});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')document.querySelectorAll('.modal').forEach(function(m){m.hidden=true;document.body.style.overflow=''})});
+</script>
+</body>
+</html>
