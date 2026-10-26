@@ -90,3 +90,119 @@ button.get{width:100%;font-family:inherit;cursor:pointer;border:0}
 .linebox p{font-size:14px;margin:6px 0 0}
 
 .article .hint{text-align:center;font-size:14px;font-weight:700;margin:4px 0 10px}
+
+/* ===== 2026-10-27 ゲーム調（AI活用診断の結果ページと同じ作り）===== */
+:root{--night:#0d1a4a;--edge:#0d1a4a;--line:#0d1a4a;--yellow-hi:#ffe066;--head:#004aad;--accent2:#8a3fb0;--pick:#fff4cf;--on-grad:#fff;
+  --f-dot:"DotGothic16","Zen Maru Gothic","Hiragino Sans",monospace}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--night:#070f2e;--edge:#070f2e;--line:#8f8ab0;--head:#fcc800;--accent2:#fcc800;--pick:#3a3212}}
+:root[data-theme="dark"]{--night:#070f2e;--edge:#070f2e;--line:#8f8ab0;--head:#fcc800;--accent2:#fcc800;--pick:#3a3212}
+body.game{min-height:100vh;background:linear-gradient(135deg,var(--navy),var(--lilac)) no-repeat;background-color:var(--lilac);color:var(--on-grad)}
+body.game::before{content:"";position:fixed;inset:0;background-image:radial-gradient(#fff 1px,transparent 1.5px);background-size:22px 22px;opacity:.14;pointer-events:none;z-index:0}
+body.game>*{position:relative;z-index:1}
+.wrap{max-width:720px;margin:0 auto;padding:0 max(16px,env(safe-area-inset-left,0px)) 0 max(16px,env(safe-area-inset-right,0px))}
+.top{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:14px 0 6px}
+.top .brand{display:flex;align-items:center;opacity:1}
+.top .brand img{height:20px;width:auto;display:block;image-rendering:pixelated}
+.top .chip{margin:0;border:2px solid var(--night);border-radius:3px;white-space:nowrap}
+/* 見出しまわり */
+.hero{display:grid;gap:14px;padding:16px 0 8px}
+.who{display:inline-block;justify-self:start;background:var(--yellow);color:#1d1b29;font-family:var(--f-dot);font-size:13px;padding:1px 10px;border:2px solid var(--night);border-radius:3px}
+.hero h1{font-family:var(--f-dot);font-weight:400;font-size:clamp(26px,7vw,36px);line-height:1.3;letter-spacing:.03em;margin:0;display:grid;gap:10px;justify-items:start;text-shadow:3px 3px 0 rgba(13,26,74,.45)}
+.hero h1 .hl{background:var(--yellow);color:#1d1b29;border:3px solid var(--line);border-radius:6px;padding:6px 16px;box-shadow:0 5px 0 var(--edge);text-shadow:none}
+.hero .lead{margin:0;font-weight:700;font-size:16.5px;text-shadow:0 1px 0 rgba(13,26,74,.6)}
+.lvrow{display:flex;align-items:flex-end;gap:14px;flex-wrap:wrap}
+.lv{background:var(--night);color:#fff;border:3px solid #fff;outline:3px solid var(--night);border-radius:6px;padding:10px 16px;display:grid;gap:2px;margin:3px}
+.lv .lab{font-family:var(--f-dot);font-size:13px;opacity:.85}
+.lv .num{font-family:var(--f-dot);font-size:34px;line-height:1;color:var(--yellow)}
+.lv .num small{font-size:16px;color:#fff;opacity:.8}
+.lv .name{font-weight:700;font-size:14px}
+.chars{display:flex;align-items:flex-end;gap:6px}
+.spr{image-rendering:pixelated;flex:none;display:block}
+.spr.patti{width:108px;height:144px;background:url(img/patti_idle_r.png) 0 0/1296px 144px no-repeat;animation:pidle 1.6s steps(12) infinite}
+@keyframes pidle{to{background-position:-1296px 0}}
+.spr.mayu{width:60px;height:144px;background:url(img/mayu_frontright.png) 0 0/720px 144px no-repeat;animation:mayu 1.2s steps(12) infinite}
+/* レベルの道のり（7つ） */
+.route{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;margin:4px 0 0}
+.route a{display:grid;gap:2px;justify-items:center;text-decoration:none;color:#fff;background:rgba(13,26,74,.55);border:2px solid rgba(255,255,255,.75);border-radius:6px;padding:7px 2px 6px;font-family:var(--f-dot);font-size:12px;line-height:1.2}
+.route a b{font-weight:400;color:var(--yellow);font-size:13px}
+.route a.last{background:#06c755;border-color:#fff}
+/* 白い窓（カード） */
+.card{background:var(--paper);color:var(--ink);border:3px solid var(--line);border-radius:8px;padding:18px 16px 16px;display:grid;gap:12px;box-shadow:0 5px 0 rgba(13,26,74,.35);min-width:0}
+.card h3{font-family:var(--f-dot);font-weight:400;font-size:19px;line-height:1.45;color:var(--head);letter-spacing:.02em;margin:0;text-wrap:balance}
+.eyebrow{font-family:var(--f-dot);font-size:12px;background:var(--yellow);color:#1d1b29;padding:0 7px;border-radius:2px;letter-spacing:.04em;display:inline-block}
+.card p{margin:0}
+.gh{display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:start}
+.gh .ttl{display:grid;gap:4px;justify-items:start}
+.lvb{font-family:var(--f-dot);font-size:15px;background:var(--night);color:var(--yellow);padding:4px 9px;border-radius:4px;white-space:nowrap;line-height:1.2;border:2px solid #fff;outline:2px solid var(--night);margin:2px}
+.up{background:var(--pick);border-left:6px solid var(--yellow);border-radius:6px;padding:8px 12px;display:grid;gap:0}
+.up .rtag{font-family:var(--f-dot);font-size:12px;color:var(--accent2);letter-spacing:.06em}
+.up p{font-weight:700;font-size:16px}
+ul.meta{list-style:none;padding:0;margin:0;display:flex;flex-wrap:wrap;gap:6px}
+ul.meta li{font-family:var(--f-dot);font-size:13px;background:var(--quote);color:var(--ink);border-radius:4px;padding:2px 9px}
+.btn{display:block;text-align:center;text-decoration:none;font:inherit;font-family:var(--f-dot);font-size:19px;letter-spacing:.04em;cursor:pointer;width:100%;padding:12px 16px;background:var(--yellow);color:#1d1b29;border:3px solid var(--line);border-radius:6px;box-shadow:0 5px 0 var(--edge);transition:transform .05s;box-sizing:border-box}
+.btn:hover{background:var(--yellow-hi)}
+.btn:active{transform:translateY(4px);box-shadow:0 1px 0 var(--edge)}
+.btn.ghost{background:var(--paper);color:var(--ink);font-size:16px;padding:10px 14px}
+.btn.line{background:#06c755;color:#fff}
+.btn.line:hover{background:#19d464}
+.card .fine{font-size:15.5px;color:var(--ink)}
+.card .hint{text-align:center;font-size:14px;font-weight:700}
+.card .more{text-align:center;font-size:14px}
+.guide{font-family:var(--f-dot);font-size:16px;color:#fff;display:flex;align-items:center;gap:8px;margin:0;text-shadow:0 1px 0 rgba(13,26,74,.6)}
+.guide::before{content:"";flex:none;border:7px solid transparent;border-top-color:var(--yellow);border-bottom-width:0;margin-top:5px}
+.stack{display:grid;gap:18px;padding:6px 0 10px}
+/* 特典ページ（本文を白い窓に） */
+.pagehead{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:end;padding:12px 0 10px}
+.pagehead .t{display:grid;gap:8px;justify-items:start}
+.pagehead h1{font-family:var(--f-dot);font-weight:400;font-size:clamp(21px,5.6vw,28px);line-height:1.4;margin:0;text-shadow:2px 2px 0 rgba(13,26,74,.45)}
+.pagehead .no{font-family:var(--f-dot);font-size:13px;color:var(--yellow)}
+.pagehead .spr.patti{width:72px;height:96px;background-size:864px 96px;animation-name:pidle-s}
+@keyframes pidle-s{to{background-position:-864px 0}}
+body.game .article{background:var(--paper);color:var(--ink);border:3px solid var(--line);border-radius:8px;padding:6px 16px 22px;box-shadow:0 5px 0 rgba(13,26,74,.35);margin:0 auto 18px}
+body.game .article h2:first-child{margin-top:16px}
+body.game .back{padding:0 0 24px}
+body.game .back a{font-family:var(--f-dot);font-weight:400;font-size:16px;border:3px solid var(--line);border-radius:6px;background:var(--paper);box-shadow:0 5px 0 var(--edge)}
+body.game footer{border:0;color:#fff;opacity:.9}
+body.game footer .pix{font-family:"Silkscreen",monospace}
+@media (prefers-reduced-motion: reduce){.spr{animation:none}}
+/* ===== 2026-10-27 修正（池本さんの指示）: 見出し1行目に「レベルUPする」＋ドット絵の矢印とキラキラ／金色の「豪華7大特典」／ゲームの文言の窓／見出しの札を1行目に ===== */
+.who{display:inline-flex;align-items:center;line-height:1;padding:5px 10px 4px}
+.hero h1 .l1{display:flex;flex-wrap:nowrap;align-items:center;gap:.25em;font-size:clamp(17px,5.5vw,34px);white-space:nowrap}
+.hero h1 .hl{display:inline-flex;align-items:center;gap:.12em;padding:.22em .4em;line-height:1.15;position:relative}
+.px{display:inline-block;flex:none;fill:currentColor;overflow:visible}
+.px.arw{width:.85em;height:.85em;color:#e4007f;animation:pxbob 1s steps(1) infinite}
+.px.spk{width:.9em;height:.9em;color:#fff;margin-top:-.7em;margin-right:-.2em;filter:drop-shadow(1px 0 0 #1d1b29) drop-shadow(-1px 0 0 #1d1b29) drop-shadow(0 1px 0 #1d1b29) drop-shadow(0 -1px 0 #1d1b29);animation:pxtw 1.4s steps(1) infinite}
+@keyframes pxbob{50%{transform:translateY(-.12em)}}
+@keyframes pxtw{50%{opacity:.35;transform:scale(.8)}}
+.hero h1 .gold{display:inline-flex;align-items:center;gap:.18em;font-size:clamp(32px,9.6vw,48px);line-height:1.15;text-shadow:none}
+.hero h1 .gold .gt{background:linear-gradient(180deg,#fff8d1 0%,#ffe066 40%,#f5b400 58%,#ffd84a 80%,#fff1a8 100%);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(3px 3px 0 #0d1a4a);letter-spacing:.04em}
+.hero h1 .gold b{font-weight:400;font-size:1.3em;line-height:1}
+.px.gs{width:.55em;height:.55em;color:#ffe066;animation:pxtw 1.4s steps(1) infinite}
+.px.gs.g2{animation-delay:.7s;transform:scaleX(-1)}
+/* ゲームの文言の窓（RPGのメッセージ風） */
+.msg{position:relative;background:var(--night);color:#fff;border:3px solid #fff;outline:3px solid var(--night);border-radius:6px;padding:12px 36px 14px 16px;margin:3px;font-family:var(--f-dot)}
+.msg p{margin:0;font-size:19px;line-height:1.6}
+.msg b{font-weight:400;color:var(--yellow)}
+.msg .cur{position:absolute;right:13px;bottom:11px;width:0;height:0;border-left:6px solid transparent;border-right:6px solid transparent;border-top:8px solid #fff;animation:pxblink 1s steps(1) infinite}
+@keyframes pxblink{50%{opacity:0}}
+/* 各特典の見出し：1行目＝LVの札と分類、2行目＝題名（横幅いっぱい） */
+.gh{display:flex;align-items:center;flex-wrap:wrap;gap:8px 10px}
+.up p{text-wrap:balance}
+.card h3.one{white-space:nowrap;font-size:min(19px,calc((100vw - 70px) / 16.8))}
+@media (prefers-reduced-motion: reduce){.px,.msg .cur{animation:none}}
+/* スマホ：文言の窓とパッチ・マユを横に並べる（縦に積むと長くなるため） */
+@media (max-width:420px){
+  .lvrow{gap:10px}
+  .msg{padding:11px 30px 13px 14px}
+  .msg p{font-size:18px}
+  .lvrow .spr.patti{width:81px;height:108px;background-size:972px 108px;animation-name:pidle-m}
+  .lvrow .spr.mayu{width:45px;height:108px;background-size:540px 108px;animation-name:mayu-m}
+}
+@keyframes pidle-m{to{background-position:-972px 0}}
+@keyframes mayu-m{to{background-position:-540px 0}}
+/* 「LINEが開いたら「相談」と送ってください」を目立たせる（2026-10-27）：ボタンを指す吹き出し＋「相談」を札に */
+body.game .hint{position:relative;display:block;margin:10px 0 4px;background:var(--yellow);color:#1d1b29;border:3px solid var(--line);border-radius:6px;padding:10px 12px;font-family:var(--f-dot);font-weight:400;font-size:17px;line-height:1.5;text-align:center;box-shadow:0 4px 0 rgba(13,26,74,.35)}
+body.game .hint::before{content:"";position:absolute;left:50%;top:-12px;transform:translateX(-50%);border-left:10px solid transparent;border-right:10px solid transparent;border-bottom:10px solid var(--line)}
+body.game .hint::after{content:"";position:absolute;left:50%;top:-7px;transform:translateX(-50%);border-left:7px solid transparent;border-right:7px solid transparent;border-bottom:7px solid var(--yellow)}
+body.game .hint b{font-weight:400;background:var(--night);color:var(--yellow);border-radius:4px;padding:1px 6px;margin:0 2px;white-space:nowrap}
+body.game .hint>span{display:inline-block}  /* 折り返すなら「LINEが開いたら／「相談」と送ってください」の所で */

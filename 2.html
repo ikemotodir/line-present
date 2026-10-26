@@ -9,15 +9,20 @@
 <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700;900&family=DotGothic16&family=Silkscreen&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
-<body>
-<header class="band has-sprite">
-  <div class="in">
-    <a class="brand" href="gift.html">STUDIO PATTI ／ 7 PRESENTS</a><br>
-    <span class="chip">特典 3</span>
+<body class="game">
+<div class="wrap">
+<header class="top">
+  <a class="brand" href="gift.html" aria-label="STUDIO PATTI"><img src="img/nav_logo.png" alt="STUDIO PATTI"></a>
+  <span class="chip">7大特典</span>
+</header>
+<section class="pagehead">
+  <div class="t">
+    <span class="lvb">LV.3</span>
+    <span class="no">特典3</span>
     <h1>【まずこれやれ②】<br>自動で動き出すClaude設定ガイド</h1>
   </div>
-  <div class="sprite patti" role="img" aria-label="おばけのパッチ"></div>
-</header>
+  <span class="spr patti" role="img" aria-label="おばけのパッチ"></span>
+</section>
 <main class="article">
 <p>Claude Code は、ふだん作業のたびに「やっていい？」と聞いてきます。これを止めて、<strong>任せたら最後まで自動で動く</strong>ようにする設定です。リスクと守り方もセットで。</p>
 <div class="maru"><a class="get" href="files/全自動設定_丸投げ.md" download>丸投げファイルをダウンロード</a><button type="button" class="get ghost" data-open="m-全自動設定_丸投げ">中身を見る・コピーする</button></div><div class="modal" id="m-全自動設定_丸投げ" hidden><div class="sheet"><div class="bar"><b>全自動設定_丸投げ.md</b><button type="button" class="copy2">コピー</button><button type="button" class="close">とじる</button></div><pre># 全自動で動く設定 ― Claude Code への丸投げ指示書
@@ -91,6 +96,7 @@
 </main>
 <nav class="back"><a href="gift.html">← 7大特典の一覧へもどる</a></nav>
 <footer><span class="pix">STUDIO PATTI</span>合同会社スタジオパッチ　池本 将</footer>
+</div>
 <script>
 document.querySelectorAll('.copybox .copy').forEach(function(b){
   b.addEventListener('click',function(){

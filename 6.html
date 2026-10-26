@@ -9,15 +9,20 @@
 <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700;900&family=DotGothic16&family=Silkscreen&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
-<body>
-<header class="band has-sprite">
-  <div class="in">
-    <a class="brand" href="gift.html">STUDIO PATTI ／ 7 PRESENTS</a><br>
-    <span class="chip">特典 4</span>
+<body class="game">
+<div class="wrap">
+<header class="top">
+  <a class="brand" href="gift.html" aria-label="STUDIO PATTI"><img src="img/nav_logo.png" alt="STUDIO PATTI"></a>
+  <span class="chip">7大特典</span>
+</header>
+<section class="pagehead">
+  <div class="t">
+    <span class="lvb">LV.4</span>
+    <span class="no">特典4</span>
     <h1>【まずこれやれ③】<br>あなたのAI学習を<br>より深くする裏技</h1>
   </div>
-  <div class="sprite patti" role="img" aria-label="おばけのパッチ"></div>
-</header>
+  <span class="spr patti" role="img" aria-label="おばけのパッチ"></span>
+</section>
 <main class="article">
 <h2>ボクが作った理由</h2>
 <p>講座の動画17本（計10時間）や電子書籍を、AIに覚えさせたかったからです。でも要約で覚えさせると、すぐ消えて浅いまま。そこで<strong>元の言葉のまま丸ごと覚えさせる</strong>やり方を、指示書にしました。</p>
@@ -86,6 +91,7 @@
 </main>
 <nav class="back"><a href="gift.html">← 7大特典の一覧へもどる</a></nav>
 <footer><span class="pix">STUDIO PATTI</span>合同会社スタジオパッチ　池本 将</footer>
+</div>
 <script>
 document.querySelectorAll('.copybox .copy').forEach(function(b){
   b.addEventListener('click',function(){
