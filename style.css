@@ -206,3 +206,9 @@ body.game .hint::before{content:"";position:absolute;left:50%;top:-12px;transfor
 body.game .hint::after{content:"";position:absolute;left:50%;top:-7px;transform:translateX(-50%);border-left:7px solid transparent;border-right:7px solid transparent;border-bottom:7px solid var(--yellow)}
 body.game .hint b{font-weight:400;background:var(--night);color:var(--yellow);border-radius:4px;padding:1px 6px;margin:0 2px;white-space:nowrap}
 body.game .hint>span{display:inline-block}  /* 折り返すなら「LINEが開いたら／「相談」と送ってください」の所で */
+/* 2026-10-27 特典1の題名：折り返すなら「！」と「知」の間で。前半が1行に収まる大きさに */
+.card h3.fit{font-size:min(19px,calc((100vw - 70px) / 16.6))}
+.card h3.fit>span,.pagehead h1 .nw{display:inline-block;white-space:nowrap}
+/* 特典ページの頭：題名は横幅いっぱい（パッチは札の右） */
+.pagehead h1{grid-column:1/-1}
+.pagehead h1:has(.nw){font-size:min(clamp(21px,5.6vw,28px),calc((100vw - 32px) / 16.6))}
