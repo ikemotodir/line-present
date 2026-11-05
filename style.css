@@ -212,3 +212,8 @@ body.game .hint>span{display:inline-block}  /* 折り返すなら「LINEが開�
 /* 特典ページの頭：題名は横幅いっぱい（パッチは札の右） */
 .pagehead h1{grid-column:1/-1}
 .pagehead h1:has(.nw){font-size:min(clamp(21px,5.6vw,28px),calc((100vw - 32px) / 16.6))}
+
+/* ===== 10大特典（2026-11-05）: 道のりは5つずつ2段・金の見出しは「10」の2桁が入る大きさ ===== */
+.route{grid-template-columns:repeat(5,1fr)}
+.hero h1 .gold{font-size:clamp(28px,8.6vw,46px)}
+#lv6 h3.one{font-size:min(19px,calc((100vw - 70px) / 19.6))}

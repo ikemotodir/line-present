@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>【その通りやれば完璧】ClaudeCodeセットアップガイド｜STUDIO PATTI 10大特典</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700;900&family=DotGothic16&family=Silkscreen&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="game">
+<div class="wrap">
+<header class="top">
+  <a class="brand" href="gift.html" aria-label="STUDIO PATTI"><img src="img/nav_logo.png" alt="STUDIO PATTI"></a>
+  <span class="chip">10大特典</span>
+</header>
+<section class="pagehead">
+  <div class="t">
+    <span class="lvb">LV.2</span>
+    <span class="no">特典2</span>
+  </div>
+  <span class="spr patti" role="img" aria-label="おばけのパッチ"></span>
+  <h1>【その通りやれば完璧】<br>ClaudeCodeセットアップガイド</h1>
+</section>
+<main class="article">
+<p>Claude をパソコンに入れ、Claude Code に最初のファイルを作ってもらう所まで、順番に。<strong>黒い画面（ターミナル）は使いません。</strong></p>
+<h2>先に知っておく事</h2>
+<ul>
+<li><strong>無料プランでは使えません。</strong> Pro 以上の有料プランが要ります</li>
+<li>料金ページの Pro は「月払いの場合は $20」（2026年11月確認）。日本で払う金額と税は、申し込みの画面で確かめてください</li>
+<li>Pro には5時間ごと・週ごとの使用量の上限があります。上限によく当たる人は Max（Pro の5倍の使用量）も</li>
+<li>使えるのは18歳以上です（規約）</li>
+<li>解約するまで自動で更新・請求され、支払いは原則として返金されません（規約）</li>
+<li>やめる時は、設定 ＞ お支払い（画面によっては「請求」）の「キャンセル」。更新日の少なくとも24時間前に</li>
+<li>パソコンは Windows 10（1809 以上）か macOS 13 以上、メモリ 4GB 以上</li>
+</ul>
+<h2>手順（上から順に）</h2>
+<ol>
+<li><a href="https://claude.com/ja/pricing" target="_blank" rel="noopener">料金ページ</a>を開き、Pro の「Claude を試す」を押す</li>
+<li>アカウントを作り（持っている人はログイン）、画面の案内どおりに Pro の申し込みを終える</li>
+<li><a href="https://claude.com/ja/download" target="_blank" rel="noopener">ダウンロードページ</a>で「Windows」の「ダウンロード」を押す（Mac は「macOS」）。ARM のパソコンだけは「Windows（arm 64）」。ARM かどうかは、Windows の設定 → システム → バージョン情報 の「システムの種類」で分かります</li>
+<li>ダウンロードしたファイルを開き、インストールを終える</li>
+<li>スタートメニュー（Mac はアプリケーション）から Claude を開き、ログイン</li>
+<li>画面を日本語に：左下のプロフィールのアイコン →「言語」（英語の画面では「Language」）→ 日本語</li>
+<li>サイドバー上部の「Code」を押す（アイコンだけなら、マウスを合わせると名前が出る）</li>
+<li>作業用のフォルダを作る。Windows は Windows キー + E → 作る場所（例：ドキュメント）で「新規」→ フォルダー。Mac は Finder で作る場所を開き「ファイル」＞「新規フォルダ」。名前は英数字（例：claude-work）</li>
+<li>入力欄の下の行の一番左（環境）で「ローカル」の一番上 → 隣のフォルダの所 →「フォルダを開く…」→ 8 のフォルダ（英語の画面では Local・Open folder…）</li>
+<li>同じ行でモードを選べます。1つずつ確かめたい人は「手動」（英語の画面では Manual）</li>
+<li>下の最初の一言をコピーして入力欄に貼り、Enter</li>
+<li>許可を聞かれたら、内容を読んでから許可。聞かれずに進めたい人は Lv.3 へ</li>
+</ol>
+<p>画面は版で違うことがあります。黒い画面で入れたい人は、公式の<a href="https://code.claude.com/docs/ja/terminal-guide" target="_blank" rel="noopener">ターミナルガイド</a>へ。</p>
+<h2>最初の一言（コピーして貼る）</h2>
+<div class="copybox"><button type="button" class="copy">コピー</button><pre>これから Claude Code を初めて使います。パソコンが苦手な人にも分かるように進めてください。途中で質問はせず、最後まで自分で進めてください。
+
+1. このパソコンが Windows か Mac かを確かめてください。確かめるだけにして、何もインストールせず、設定も変えないでください。今開いているフォルダに書けるかどうかは、2 のファイルを作れたかで確かめてください。
+2. 今開いているフォルダに、はじめてのメモ.md を1つだけ作ってください。中身は次の4つにしてください。
+   ・今日の日付
+   ・1で確かめた結果
+   ・Claude Code に頼めることの例を3つ（初心者向けに1行ずつ）書いてください
+   ・次にやるとよいことを3つ書いてください
+3. このフォルダの外のファイルは触らないでください。
+4. 作ったら、ファイルが本当にあるか読み直して確かめてから報告してください。
+5. 報告は、専門用語を使わずに、次の順に1行ずつ書いてください。
+   ・このパソコンで使える状態か
+   ・作ったファイルの名前と場所
+   ・次にやること</pre></div>
+<h2>つまずいたら</h2>
+<ul>
+<li><strong>「Code」を押すとアップグレードの案内が出る</strong>：有料プランの申し込みが先です</li>
+<li><strong>サインインを促す案内が出る</strong>：サインインを終えて、アプリを再起動する</li>
+<li><strong>403 などの認証エラーが出る</strong>：アプリのメニューからサインアウトし、もう一度サインイン</li>
+<li><strong>環境を選ぶ所が入力欄の上にある</strong>：古い画面。「ヘルプ」→「アップデートを確認…」で新しくする（Mac は「Claude」の中。英語の画面では Help（Mac は Claude）→ Check for Updates…）</li>
+</ul>
+<h2>次にやること</h2>
+<ul>
+<li><strong>Lv.3</strong>：許可を聞かずに最後まで動く設定 <a class="get" href="2.html">Lv.3 を開く</a></li>
+<li><strong>Lv.5</strong>：嘘を抑えるルールを覚えさせる <a class="get" href="1.html">Lv.5 を開く</a></li>
+</ul>
+<p>※画面・料金・規約は変わることがあります。Claude を作る Anthropic 社が作った・認めた資料ではなく、関係もありません。この特典の内容を使って起きたことについて、弊社は責任を負いかねます。予めご了承ください。</p>
+<h2>出典</h2>
+<ul>
+<li><a href="https://code.claude.com/docs/ja/desktop-quickstart" target="_blank" rel="noopener">Claude Code：デスクトップアプリを始める</a>（2026年11月確認）</li>
+<li><a href="https://code.claude.com/docs/ja/desktop" target="_blank" rel="noopener">Claude Code：デスクトップ版の使い方・トラブルシューティング</a>（2026年11月確認）</li>
+<li><a href="https://code.claude.com/docs/ja/setup" target="_blank" rel="noopener">Claude Code：セットアップ</a>・<a href="https://code.claude.com/docs/ja/terminal-guide" target="_blank" rel="noopener">ターミナルガイド</a>（2026年11月確認）</li>
+<li><a href="https://claude.com/ja/pricing" target="_blank" rel="noopener">料金</a>・<a href="https://claude.com/ja/download" target="_blank" rel="noopener">ダウンロード</a>（2026年11月確認）</li>
+<li><a href="https://support.claude.com/ja/articles/10065433-claude-desktopをインストール" target="_blank" rel="noopener">ヘルプ：Claude Desktop をインストール</a>・<a href="https://support.claude.com/ja/articles/10769299" target="_blank" rel="noopener">ヘルプ：好みの言語で使う</a>・<a href="https://support.claude.com/ja/articles/8325606" target="_blank" rel="noopener">ヘルプ：Pro とは</a>・<a href="https://support.claude.com/ja/articles/11145838" target="_blank" rel="noopener">ヘルプ：Pro・Max で Claude Code を使う</a>（2026年11月確認）</li>
+<li><a href="https://www.anthropic.com/legal/consumer-terms" target="_blank" rel="noopener">消費者向け規約（英語）</a>（2026年11月確認）</li>
+<li><a href="https://support.microsoft.com/ja-jp/windows/experience/compatibility/32-bit-and-64-bit-windows-frequently-asked-questions" target="_blank" rel="noopener">Microsoft：32 ビットと 64 ビットの Windows</a>・<a href="https://support.microsoft.com/ja-jp/word/create-a-new-folder" target="_blank" rel="noopener">Microsoft：新しいフォルダーを作成する</a>（2026年11月確認）</li>
+<li><a href="https://support.apple.com/ja-jp/guide/mac-help/mh26885/mac" target="_blank" rel="noopener">Apple：Macでファイルをフォルダに整理する</a>（2026年11月確認）</li>
+<li>画面の日本語の表記：Claude デスクトップアプリ（Windows 版 4.16336.0.0）の中の日本語の表示の表（2026-11確認）</li>
+</ul>
+</main>
+<nav class="back"><a href="gift.html">← 10大特典の一覧へもどる</a></nav>
+<footer><span class="pix">STUDIO PATTI</span>合同会社スタジオパッチ　池本 将</footer>
+</div>
+<script>
+document.querySelectorAll('.copybox .copy').forEach(function(b){
+  b.addEventListener('click',function(){
+    var t=b.parentNode.querySelector('pre').textContent;
+    var ok=function(){b.textContent='コピーしました';setTimeout(function(){b.textContent='コピー'},1800)};
+    var ng=function(){var r=document.createRange();r.selectNodeContents(b.parentNode.querySelector('pre'));var s=getSelection();s.removeAllRanges();s.addRange(r);b.textContent='選択しました'};
+    try{navigator.clipboard.writeText(t).then(ok,ng)}catch(e){ng()}
+  });
+});
+
+document.querySelectorAll('pre[data-src]').forEach(function(pre){
+  fetch(pre.getAttribute('data-src')).then(function(r){return r.ok?r.text():Promise.reject()}).then(function(t){pre.textContent=t}).catch(function(){pre.textContent='読み込めない時は、上のダウンロードから開いてください'});
+});
+document.querySelectorAll('[data-open]').forEach(function(b){
+  b.addEventListener('click',function(){var m=document.getElementById(b.getAttribute('data-open'));if(m){m.hidden=false;document.body.style.overflow='hidden'}});
+});
+document.querySelectorAll('.modal').forEach(function(m){
+  var close=function(){m.hidden=true;document.body.style.overflow=''};
+  m.addEventListener('click',function(e){if(e.target===m)close()});
+  var c=m.querySelector('.close');if(c)c.addEventListener('click',close);
+  var cp=m.querySelector('.copy2');
+  if(cp)cp.addEventListener('click',function(){var t=m.querySelector('pre').textContent;
+    var ok=function(){cp.textContent='コピーしました';setTimeout(function(){cp.textContent='コピー'},1800)};
+    var ng=function(){var r=document.createRange();r.selectNodeContents(m.querySelector('pre'));var s=getSelection();s.removeAllRanges();s.addRange(r);cp.textContent='選択しました'};
+    try{navigator.clipboard.writeText(t).then(ok,ng)}catch(e){ng()}});
+});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')document.querySelectorAll('.modal').forEach(function(m){m.hidden=true;document.body.style.overflow=''})});
+</script>
+</body>
+</html>

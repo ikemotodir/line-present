@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>【誰でも無料】オンライン個別相談の優先権｜STUDIO PATTI 7大特典</title>
+<title>【誰でも無料】オンライン個別相談の権利｜STUDIO PATTI 10大特典</title>
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700;900&family=DotGothic16&family=Silkscreen&display=swap" rel="stylesheet">
@@ -13,15 +13,15 @@
 <div class="wrap">
 <header class="top">
   <a class="brand" href="gift.html" aria-label="STUDIO PATTI"><img src="img/nav_logo.png" alt="STUDIO PATTI"></a>
-  <span class="chip">7大特典</span>
+  <span class="chip">10大特典</span>
 </header>
 <section class="pagehead">
   <div class="t">
-    <span class="lvb">LV.7</span>
-    <span class="no">特典7</span>
+    <span class="lvb">LV.10</span>
+    <span class="no">特典10</span>
   </div>
   <span class="spr patti" role="img" aria-label="おばけのパッチ"></span>
-  <h1>【誰でも無料】<br>オンライン個別相談の優先権</h1>
+  <h1>【誰でも無料】<br>オンライン個別相談の権利</h1>
 </section>
 <main class="article">
 <p>公式LINEに登録してくれた方から、優先してご案内します。60〜120分、オンラインで。あなたのお話を聞いて、あなたの「やりたい事」とAIでできる事を一緒に整理します。</p>
@@ -43,7 +43,7 @@
 </ul>
 <a class="get" href="https://lin.ee/QV4fVfO" target="_blank" rel="noopener">個別無料相談を申し込む</a><p class="hint"><span>LINEが開いたら</span><span><b>「相談」</b>と送ってください</span></p>
 </main>
-<nav class="back"><a href="gift.html">← 7大特典の一覧へもどる</a></nav>
+<nav class="back"><a href="gift.html">← 10大特典の一覧へもどる</a></nav>
 <footer><span class="pix">STUDIO PATTI</span>合同会社スタジオパッチ　池本 将</footer>
 </div>
 <script>
@@ -56,6 +56,9 @@ document.querySelectorAll('.copybox .copy').forEach(function(b){
   });
 });
 
+document.querySelectorAll('pre[data-src]').forEach(function(pre){
+  fetch(pre.getAttribute('data-src')).then(function(r){return r.ok?r.text():Promise.reject()}).then(function(t){pre.textContent=t}).catch(function(){pre.textContent='読み込めない時は、上のダウンロードから開いてください'});
+});
 document.querySelectorAll('[data-open]').forEach(function(b){
   b.addEventListener('click',function(){var m=document.getElementById(b.getAttribute('data-open'));if(m){m.hidden=false;document.body.style.overflow='hidden'}});
 });

@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>【まず読むべき】Claude公式文を分かりやすく翻訳！知っておきたい20の事｜STUDIO PATTI 7大特典</title>
+<title>【まず読むべき】Claude公式文を分かりやすく翻訳！知っておきたい20の事｜STUDIO PATTI 10大特典</title>
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700;900&family=DotGothic16&family=Silkscreen&display=swap" rel="stylesheet">
@@ -13,7 +13,7 @@
 <div class="wrap">
 <header class="top">
   <a class="brand" href="gift.html" aria-label="STUDIO PATTI"><img src="img/nav_logo.png" alt="STUDIO PATTI"></a>
-  <span class="chip">7大特典</span>
+  <span class="chip">10大特典</span>
 </header>
 <section class="pagehead">
   <div class="t">
@@ -89,7 +89,7 @@
 <li><a href="https://claude.com/download" target="_blank" rel="noopener">Claudeのダウンロード</a>（2026-10-06確認）</li>
 </ul>
 </main>
-<nav class="back"><a href="gift.html">← 7大特典の一覧へもどる</a></nav>
+<nav class="back"><a href="gift.html">← 10大特典の一覧へもどる</a></nav>
 <footer><span class="pix">STUDIO PATTI</span>合同会社スタジオパッチ　池本 将</footer>
 </div>
 <script>
@@ -102,6 +102,9 @@ document.querySelectorAll('.copybox .copy').forEach(function(b){
   });
 });
 
+document.querySelectorAll('pre[data-src]').forEach(function(pre){
+  fetch(pre.getAttribute('data-src')).then(function(r){return r.ok?r.text():Promise.reject()}).then(function(t){pre.textContent=t}).catch(function(){pre.textContent='読み込めない時は、上のダウンロードから開いてください'});
+});
 document.querySelectorAll('[data-open]').forEach(function(b){
   b.addEventListener('click',function(){var m=document.getElementById(b.getAttribute('data-open'));if(m){m.hidden=false;document.body.style.overflow='hidden'}});
 });
