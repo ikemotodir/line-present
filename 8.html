@@ -31,7 +31,7 @@
 <li>パソコンの中のファイルを、自分で探して読む</li>
 <li>URLの中身と、その先のリンクまで読む</li>
 <li>ログインが要る自分のページを読む</li>
-<li>長いPDF・画像の文字を読む</li>
+<li>長いPDFを読む・画像の文字をテキストに残す</li>
 <li>パソコンにある動画を文字にする（ARM の Windows では使えないことも）</li>
 </ul>
 <h2>先にやっておく事</h2>
@@ -42,7 +42,7 @@
 </ul>
 <h2>① 丸投げする</h2>
 <div class="maru"><a class="get" href="files/情報収集能力UP_丸投げ.md" download>丸投げファイルをダウンロード</a><button type="button" class="get ghost" data-open="m-情報収集能力UP_丸投げ">中身を見る・コピーする</button></div><div class="modal" id="m-情報収集能力UP_丸投げ" hidden><div class="sheet"><div class="bar"><b>情報収集能力UP_丸投げ.md</b><button type="button" class="copy2">コピー</button><button type="button" class="close">とじる</button></div><pre data-src="files/情報収集能力UP_丸投げ.md">読み込み中…</pre></div></div>
-<p>Claude Code でフォルダを選び（Lv.2 の物でOK）、中身を貼って送るだけ。許可を何度か聞かれたら、内容が丸投げ文のとおりなら許可。<br>入るのは、聞かずに読む・探す許可（鍵のファイル .env などは読まない。ただしプログラムが開く時は止まりません）、文字にする無料の部品、探し方の決まり。</p>
+<p>Claude Code でフォルダを選び（Lv.2 の物でOK）、中身を貼って送るだけ。許可を何度か聞かれたら、内容が丸投げ文のとおりなら許可。<br>入るのは、聞かずに読む・探す許可（鍵のファイル .env などは読まない設定。ただしプログラムを通すと防げません）、文字にする無料の部品、探し方の決まり。</p>
 <ul>
 <li>Lv.3 の「権限をバイパス」でなくても効きます</li>
 <li>作業フォルダの外を読んでよいか聞かれたら、今後も許可する方を選ぶ（今後はブロックする方だと、どのモードでも外を読めなくなる）</li>
@@ -51,15 +51,16 @@
 </ul>
 <h2>② ログインが要るページ用の拡張を入れる</h2>
 <p>Chrome の拡張（Claude in Chrome）です。クリック・入力・送信もでき、結果の責任は使う人に。許可は、頼んだ事だけか確かめてから。</p>
+<p>先に：銀行・医療・役所などのアカウントが無い別のプロファイル（右上のプロファイル →「Chrome プロファイルを追加」）を開き、そこで1〜5と、読ませたいサイトへのログインをする（公式のおすすめ）。</p>
 <p><a class="get" href="https://chromewebstore.google.com/detail/claude/fcoeoabgfenejglbffodgkkbkcdhcgfn">Chrome ウェブストアで開く</a></p>
 <ol>
 <li>パソコンの Chrome でこのページを開き、上のボタン →「Chrome に追加」→「拡張機能を追加」</li>
 <li>聞かれたら、Claude Code と同じアカウントでサインインし、権限を許可</li>
 <li>パズルのピースの形のボタン →「Claude」の横のピン</li>
-<li>アプリの左下のイニシャル →「設定」→「カスタマイズ」→「コネクタ」→ Claude in Chrome の「設定」→ オンにする</li>
-<li>使う時は Chrome を開いておく。読めない時は Chrome を開き直し、その会話のコネクタで Claude in Chrome がオンか見る（公式：会話ごとにオン）</li>
+<li>Claude アプリの左下のイニシャル →「設定」→「カスタマイズ」→「コネクタ」→ Claude in Chrome の「設定」→ オンにする</li>
+<li>使う時は Chrome を開き、その会話のコネクタで Claude in Chrome をオンにする（公式：会話ごとにオン）。読めない時は Chrome を開き直す</li>
 </ol>
-<p>画面は版で違うことがあります。公式のおすすめは、銀行・医療・役所などのアカウントが無い別のプロファイル（右上のプロファイル →「Chrome プロファイルを追加」）で1〜5をやる事。</p>
+<p>画面は版で違うことがあります。</p>
 <h2>やってはいけない事</h2>
 <ul>
 <li>YouTube の動画をURLから落とさない（規約で禁止）。YouTube はAIに読ませず、自分で説明欄の「文字起こしを表示」を見る（字幕付き）</li>
@@ -79,7 +80,8 @@ URL：ここに貼る</pre></div>
 <p>ログインが要るページ</p>
 <div class="copybox"><button type="button" class="copy">コピー</button><pre>Chrome で次のページを開いて、書いてある内容を読んで、要点を教えて。私がログインしている自分のページです。ログインの画面が出たら止まって。
 URL：ここに貼る</pre></div>
-<blockquote><p>※丸投げ文の、通しでの動作は未確認です。パソコンやOSによっては動かないことがあります。修正のご依頼はお受けしていません。この特典の内容を使って起きたことについて、弊社は責任を負いかねます。予めご了承ください。</p></blockquote>
+<blockquote><p>※丸投げ文の、通しでの動作は未確認です。パソコンやOSによっては動かないことがあります。修正のご依頼はお受けしていません。</p></blockquote>
+<p class="fine">この特典の内容を使って起きたことについて、弊社は責任を負いかねます。予めご了承ください。</p>
 <h2>出典</h2>
 <ul>
 <li><a href="https://code.claude.com/docs/ja/permissions" target="_blank" rel="noopener">Claude Code：権限</a>・<a href="https://code.claude.com/docs/ja/tools-reference" target="_blank" rel="noopener">ツール</a>・<a href="https://code.claude.com/docs/ja/chrome" target="_blank" rel="noopener">Chrome</a>・<a href="https://code.claude.com/docs/ja/security" target="_blank" rel="noopener">セキュリティ</a>・<a href="https://code.claude.com/docs/ja/memory" target="_blank" rel="noopener">メモリ</a>・<a href="https://code.claude.com/docs/ja/data-usage" target="_blank" rel="noopener">データの使い方</a>（2026年11月確認）</li>
