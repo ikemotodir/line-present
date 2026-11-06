@@ -157,6 +157,10 @@ ul.meta li{font-family:var(--f-dot);font-size:13px;background:var(--quote);color
 .pagehead .t{display:grid;gap:8px;justify-items:start}
 .pagehead h1{font-family:var(--f-dot);font-weight:400;font-size:clamp(21px,5.6vw,28px);line-height:1.4;margin:0;text-shadow:2px 2px 0 rgba(13,26,74,.45)}
 .pagehead .no{font-family:var(--f-dot);font-size:13px;color:var(--yellow)}
+.pagehead .os{display:flex;gap:4px}
+.pagehead .os b{font-family:var(--f-dot);font-weight:400;font-size:11px;line-height:1;padding:3px 6px;border-radius:3px;color:#fff;border:1px solid rgba(255,255,255,.55)}
+.pagehead .os .w{background:#0a7bd1}
+.pagehead .os .m{background:#3b3a48}
 .pagehead .spr.patti{width:72px;height:96px;background-size:864px 96px;animation-name:pidle-s}
 @keyframes pidle-s{to{background-position:-864px 0}}
 body.game .article{background:var(--paper);color:var(--ink);border:3px solid var(--line);border-radius:8px;padding:6px 16px 22px;box-shadow:0 5px 0 rgba(13,26,74,.35);margin:0 auto 18px}
